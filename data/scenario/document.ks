@@ -24,6 +24,9 @@
 [if exp="f.unlock_doc_10 == null"][eval exp="f.unlock_doc_10 = false"][endif]
 [if exp="f.unlock_map == null"][eval exp="f.unlock_map = false"][endif]
 
+; 文章・画像は menu_data.ks（シナリオタブから編集）
+[call storage="menu_data.ks"]
+
 [iscript]
 // 直前画面の表示物にだけぼかしをかける（これ以降に出すメニューUIは対象外）
 var root = $("#root_layer_game");
@@ -41,238 +44,93 @@ root.append(
     '<div id="menu_green_overlay" style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:10;background:rgba(40,90,50,0.22);pointer-events:none;"></div>'
 );
 
-// ナゾ/資料のページデータ（1=現在ページ、2/3=予備ページ）
-var makeNazoPlaceholder = function (title, pageNo) {
-    return {
-        title: title,
-        text1: title + " " + pageNo + "ページ目（未設定）",
-        text2: "",
-        text3: "",
-        text4: "",
-        prefix: "",
-        red: "",
-        suffix: "",
-        img: "画像：" + title + " " + pageNo + "ページ目（未設定）",
-        image: ""
-    };
-};
-var makeDocPlaceholder = function (title, pageNo) {
-    return {
-        title: title,
-        text1: title + " " + pageNo + "ページ目（未設定）",
-        text2: "",
-        img: "画像：" + title + " " + pageNo + "ページ目（未設定）",
-        image: ""
-    };
+window.menuGetPageNums = function (pages) {
+    var keys = Object.keys(pages || {});
+    var nums = [];
+    var i;
+    for (i = 0; i < keys.length; i++) {
+        var n = parseInt(keys[i], 10);
+        if (n > 0) nums.push(n);
+    }
+    nums.sort(function (a, b) { return a - b; });
+    return nums;
 };
 
-window.menuNazoPages = {
-    1: {
-        1: {
-            title: "志岐間 春恵",
-            text1: "職業 主婦",
-            text2: "撞木橋近くの屋敷に住む主婦。",
-            text3: "約1年前に11歳の息子・修一を誘拐された末に亡くしている。",
-            text4: "騒動をもみ消された挙げ句、犯人不明に苛立っている。",
-            prefix: "探偵・",
-            red: "櫂 利飛太",
-            suffix: "に真相究明と犯人捜しを依頼した。",
-            img: "画像：ナゾA",
-            image: "chara/1/shigima_harue.png"
-        },
-        2: makeNazoPlaceholder("ナゾA", 2),
-        3: makeNazoPlaceholder("ナゾA", 3)
-    },
-    2: {
-        1: {
-            title: "ナゾB",
-            text1: "ナゾBの説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            text3: "",
-            text4: "",
-            prefix: "",
-            red: "",
-            suffix: "",
-            img: "画像：ナゾB（未設定）",
-            image: ""
-        },
-        2: makeNazoPlaceholder("ナゾB", 2),
-        3: makeNazoPlaceholder("ナゾB", 3)
-    },
-    3: {
-        1: {
-            title: "ナゾC",
-            text1: "ナゾCの説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            text3: "",
-            text4: "",
-            prefix: "",
-            red: "",
-            suffix: "",
-            img: "画像：ナゾC（未設定）",
-            image: ""
-        },
-        2: makeNazoPlaceholder("ナゾC", 2),
-        3: makeNazoPlaceholder("ナゾC", 3)
-    },
-    4: {
-        1: {
-            title: "ナゾD",
-            text1: "ナゾDの説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            text3: "",
-            text4: "",
-            prefix: "",
-            red: "",
-            suffix: "",
-            img: "画像：ナゾD（未設定）",
-            image: ""
-        },
-        2: makeNazoPlaceholder("ナゾD", 2),
-        3: makeNazoPlaceholder("ナゾD", 3)
-    },
-    5: {
-        1: {
-            title: "ナゾE",
-            text1: "ナゾEの説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            text3: "",
-            text4: "",
-            prefix: "",
-            red: "",
-            suffix: "",
-            img: "画像：ナゾE（未設定）",
-            image: ""
-        },
-        2: makeNazoPlaceholder("ナゾE", 2),
-        3: makeNazoPlaceholder("ナゾE", 3)
+window.menuInitPageFlags = function () {
+    var f = TYRANO.kag.stat.f;
+    var letters = { 1: "a", 2: "b", 3: "c", 4: "d", 5: "e" };
+    var selected;
+    var nums;
+    var i;
+    var k;
+    for (selected in (window.menuNazoPages || {})) {
+        nums = window.menuGetPageNums(window.menuNazoPages[selected]);
+        for (i = 0; i < nums.length; i++) {
+            k = "unlock_nazo_" + letters[selected] + "_p" + nums[i];
+            if (f[k] == null) f[k] = false;
+        }
+    }
+    for (selected in (window.menuDocPages || {})) {
+        nums = window.menuGetPageNums(window.menuDocPages[selected]);
+        for (i = 0; i < nums.length; i++) {
+            k = "unlock_doc_" + selected + "_p" + nums[i];
+            if (f[k] == null) f[k] = false;
+        }
     }
 };
 
-window.menuDocPages = {
-    1: {
-        1: {
-            title: "資料1",
-            text1: "資料1の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料1（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料1", 2),
-        3: makeDocPlaceholder("資料1", 3)
-    },
-    2: {
-        1: {
-            title: "資料2",
-            text1: "資料2の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料2（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料2", 2),
-        3: makeDocPlaceholder("資料2", 3)
-    },
-    3: {
-        1: {
-            title: "資料3",
-            text1: "資料3の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料3（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料3", 2),
-        3: makeDocPlaceholder("資料3", 3)
-    },
-    4: {
-        1: {
-            title: "資料4",
-            text1: "資料4の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料4（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料4", 2),
-        3: makeDocPlaceholder("資料4", 3)
-    },
-    5: {
-        1: {
-            title: "資料5",
-            text1: "資料5の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料5（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料5", 2),
-        3: makeDocPlaceholder("資料5", 3)
-    },
-    6: {
-        1: {
-            title: "資料6",
-            text1: "資料6の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料6（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料6", 2),
-        3: makeDocPlaceholder("資料6", 3)
-    },
-    7: {
-        1: {
-            title: "資料7",
-            text1: "資料7の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料7（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料7", 2),
-        3: makeDocPlaceholder("資料7", 3)
-    },
-    8: {
-        1: {
-            title: "資料8",
-            text1: "資料8の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料8（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料8", 2),
-        3: makeDocPlaceholder("資料8", 3)
-    },
-    9: {
-        1: {
-            title: "資料9",
-            text1: "資料9の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料9（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料9", 2),
-        3: makeDocPlaceholder("資料9", 3)
-    },
-    10: {
-        1: {
-            title: "資料10",
-            text1: "資料10の説明テキスト（仮）",
-            text2: "ここに詳細を書きます。",
-            img: "画像：資料10（未設定）",
-            image: ""
-        },
-        2: makeDocPlaceholder("資料10", 2),
-        3: makeDocPlaceholder("資料10", 3)
+window.menuGetUnlockedPages = function (kind, selected) {
+    var f = TYRANO.kag.stat.f;
+    var pages;
+    var prefix;
+    if (kind === "nazo") {
+        var letter = { 1: "a", 2: "b", 3: "c", 4: "d", 5: "e" }[selected];
+        prefix = "unlock_nazo_" + letter + "_p";
+        pages = (window.menuNazoPages || {})[selected] || {};
+    } else {
+        prefix = "unlock_doc_" + selected + "_p";
+        pages = (window.menuDocPages || {})[selected] || {};
     }
+    var nums = window.menuGetPageNums(pages);
+    var unlocked = [];
+    var i;
+    for (i = 0; i < nums.length; i++) {
+        if (f[prefix + nums[i]] === true) unlocked.push(nums[i]);
+    }
+    return unlocked;
 };
+
+window.menuInitPageFlags();
 
 window.menuApplyNazoPage = function (selected, page) {
     var tf = TYRANO.kag.variable.tf;
     var pages = window.menuNazoPages[selected] || {};
-    var total = Object.keys(pages).length || 1;
-    if (page < 1) page = 1;
-    if (page > total) page = total;
-    var data = pages[page] || pages[1] || makeNazoPlaceholder("ナゾ", 1);
+    var unlocked = window.menuGetUnlockedPages("nazo", selected);
+    var total = unlocked.length;
+    if (total < 1) {
+        tf.menu_nazo_selected = selected;
+        tf.menu_nazo_page = 1;
+        tf.menu_nazo_page_total = 1;
+        tf.menu_nazo_page_label = "1/1";
+        tf.menu_nazo_title = "未開放";
+        tf.menu_nazo_text1 = "このナゾのページはまだ開放されていません。";
+        tf.menu_nazo_text2 = "";
+        tf.menu_nazo_text3 = "";
+        tf.menu_nazo_text4 = "";
+        tf.menu_nazo_prefix = "";
+        tf.menu_nazo_red = "";
+        tf.menu_nazo_suffix = "";
+        tf.menu_nazo_img = "画像：未開放";
+        tf.menu_nazo_image = "";
+        return;
+    }
+    if (unlocked.indexOf(page) < 0) page = unlocked[0];
+    var pos = unlocked.indexOf(page) + 1;
+    var data = pages[page] || pages[1] || window.makeNazoPlaceholder("ナゾ", 1);
     tf.menu_nazo_selected = selected;
     tf.menu_nazo_page = page;
     tf.menu_nazo_page_total = total;
-    tf.menu_nazo_page_label = page + "/" + total;
+    tf.menu_nazo_page_label = pos + "/" + total;
     tf.menu_nazo_title = data.title;
     tf.menu_nazo_text1 = data.text1;
     tf.menu_nazo_text2 = data.text2;
@@ -288,19 +146,108 @@ window.menuApplyNazoPage = function (selected, page) {
 window.menuApplyDocPage = function (selected, page) {
     var tf = TYRANO.kag.variable.tf;
     var pages = window.menuDocPages[selected] || {};
-    var total = Object.keys(pages).length || 1;
-    if (page < 1) page = 1;
-    if (page > total) page = total;
-    var data = pages[page] || pages[1] || makeDocPlaceholder("資料", 1);
+    var unlocked = window.menuGetUnlockedPages("doc", selected);
+    var total = unlocked.length;
+    if (total < 1) {
+        tf.menu_doc_selected = selected;
+        tf.menu_doc_page = 1;
+        tf.menu_doc_page_total = 1;
+        tf.menu_doc_page_label = "1/1";
+        tf.menu_doc_title = "未開放";
+        tf.menu_doc_text1 = "この資料のページはまだ開放されていません。";
+        tf.menu_doc_text2 = "";
+        tf.menu_doc_img = "画像：未開放";
+        tf.menu_doc_image = "";
+        return;
+    }
+    if (unlocked.indexOf(page) < 0) page = unlocked[0];
+    var pos = unlocked.indexOf(page) + 1;
+    var data = pages[page] || pages[1] || window.makeDocPlaceholder("資料", 1);
     tf.menu_doc_selected = selected;
     tf.menu_doc_page = page;
     tf.menu_doc_page_total = total;
-    tf.menu_doc_page_label = page + "/" + total;
+    tf.menu_doc_page_label = pos + "/" + total;
     tf.menu_doc_title = data.title;
     tf.menu_doc_text1 = data.text1;
     tf.menu_doc_text2 = data.text2;
     tf.menu_doc_img = data.img;
     tf.menu_doc_image = data.image;
+};
+
+window.menuStepNazoPage = function (delta) {
+    var tf = TYRANO.kag.variable.tf;
+    var unlocked = window.menuGetUnlockedPages("nazo", tf.menu_nazo_selected);
+    if (unlocked.length < 1) return;
+    var idx = unlocked.indexOf(tf.menu_nazo_page);
+    if (idx < 0) idx = 0;
+    idx = (idx + delta + unlocked.length) % unlocked.length;
+    window.menuApplyNazoPage(tf.menu_nazo_selected, unlocked[idx]);
+};
+
+window.menuStepDocPage = function (delta) {
+    var tf = TYRANO.kag.variable.tf;
+    var unlocked = window.menuGetUnlockedPages("doc", tf.menu_doc_selected);
+    if (unlocked.length < 1) return;
+    var idx = unlocked.indexOf(tf.menu_doc_page);
+    if (idx < 0) idx = 0;
+    idx = (idx + delta + unlocked.length) % unlocked.length;
+    window.menuApplyDocPage(tf.menu_doc_selected, unlocked[idx]);
+};
+
+window.menuHidePreviewZoom = function () {
+    $("#menu_preview_zoom").remove();
+};
+
+window.menuShowPreviewZoom = function (src, width, height) {
+    if (!src) return;
+    if ($("#menu_preview_zoom").length) return;
+    var zw = Math.round((width || 500) * 1.5);
+    var zh = Math.round((height || 280) * 1.5);
+    var overlay = $(
+        '<div id="menu_preview_zoom" style="position:absolute;left:0;top:0;width:100%;height:100%;z-index:150000000;background:rgba(0,0,0,0.88);cursor:pointer;">' +
+            '<img style="position:absolute;left:50%;top:50%;width:' + zw + 'px;height:' + zh + 'px;transform:translate(-50%,-50%);object-fit:contain;pointer-events:none;" />' +
+        '</div>'
+    );
+    overlay.find("img").attr("src", src);
+    $("#tyrano_base").append(overlay);
+    overlay.on("click.menuZoom", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.menuHidePreviewZoom();
+    });
+};
+
+window.menuClearPreviewImage = function () {
+    $("#menu_preview_frame").remove();
+    $("#menu_preview_image").remove();
+    $("#menu_preview_zoom").remove();
+};
+
+window.menuSetPreviewImage = function (src, left, top, width, height) {
+    window.menuClearPreviewImage();
+    var frame = $('<div id="menu_preview_frame"></div>');
+    frame.attr("style", "position:absolute;left:" + left + "px;top:" + top + "px;width:" + width + "px;height:" + height + "px;z-index:2000000;pointer-events:auto;cursor:pointer;");
+    var img = $("<img id='menu_preview_image' />");
+    img.attr("src", src);
+    img.attr("style", "position:absolute;left:0;top:0;width:100%;height:100%;object-fit:contain;background:rgba(0,0,0,0.35);pointer-events:none;");
+    var badge = $(
+        '<div style="position:absolute;right:8px;bottom:8px;width:36px;height:36px;pointer-events:none;">' +
+            '<svg viewBox="0 0 36 36" width="36" height="36">' +
+                '<circle cx="15" cy="15" r="10" fill="rgba(0,0,0,0.7)" stroke="#fff" stroke-width="2"></circle>' +
+                '<line x1="22.5" y1="22.5" x2="31" y2="31" stroke="#fff" stroke-width="3" stroke-linecap="round"></line>' +
+                '<line x1="15" y1="10" x2="15" y2="20" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></line>' +
+                '<line x1="10" y1="15" x2="20" y2="15" stroke="#fff" stroke-width="2.4" stroke-linecap="round"></line>' +
+            '</svg>' +
+        '</div>'
+    );
+    frame.append(img);
+    frame.append(badge);
+    $("#tyrano_base").append(frame);
+    frame.on("click.menuZoom", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.menuShowPreviewZoom(src, width, height);
+    });
 };
 [endscript]
 
@@ -326,7 +273,7 @@ var root = $("#root_layer_game");
 root.find("[name^='menu_']").remove();
 root.find("[data-event-target^='*tab_'], [data-event-target^='*nazo_'], [data-event-target^='*doc_'], [data-event-target='*close']").remove();
 $("#menu_text_panels").remove();
-$("#menu_preview_image").remove();
+if (window.menuClearPreviewImage) window.menuClearPreviewImage();
 [endscript]
 
 ; 上部タブ
@@ -382,20 +329,18 @@ $("#menu_preview_image").remove();
 [if exp="tf.menu_nazo_image != ''"]
 [iscript]
 var nazoSrc = "./data/fgimage/" + TYRANO.kag.variable.tf.menu_nazo_image;
-$("#menu_preview_image").remove();
-$("#root_layer_game").append('<img id="menu_preview_image" style="position:absolute;left:390px;top:170px;width:500px;height:280px;z-index:40;pointer-events:none;object-fit:contain;background:rgba(0,0,0,0.35);" />');
-$("#menu_preview_image").attr("src", encodeURI(nazoSrc).replace(/#/g, "%23"));
+window.menuSetPreviewImage(encodeURI(nazoSrc).replace(/#/g, "%23"), 390, 170, 500, 280);
 [endscript]
 [else]
 [ptext name="menu_nazo_img_text" layer="1" x="390" y="170" size="24" color="white" text="&tf.menu_nazo_img" bold="true" overwrite="true"]
 [endif]
-[ptext name="menu_nazo_text1" layer="1" x="390" y="450" size="22" color="white" text="&tf.menu_nazo_text1" overwrite="true"]
-[ptext name="menu_nazo_text2" layer="1" x="390" y="485" size="22" color="white" text="&tf.menu_nazo_text2" overwrite="true"]
-[ptext name="menu_nazo_text3" layer="1" x="390" y="520" size="22" color="white" text="&tf.menu_nazo_text3" overwrite="true"]
-[ptext name="menu_nazo_text4" layer="1" x="390" y="555" size="22" color="white" text="&tf.menu_nazo_text4" overwrite="true"]
-[ptext name="menu_nazo_prefix" layer="1" x="390" y="590" size="22" color="white" text="&tf.menu_nazo_prefix" overwrite="true"]
-[ptext name="menu_nazo_red" layer="1" x="470" y="590" size="22" color="red" text="&tf.menu_nazo_red" bold="true" overwrite="true"]
-[ptext name="menu_nazo_suffix" layer="1" x="620" y="590" size="22" color="white" text="&tf.menu_nazo_suffix" overwrite="true"]
+[ptext name="menu_nazo_text1" layer="1" x="390" y="474" size="22" color="white" text="&tf.menu_nazo_text1" overwrite="true"]
+[ptext name="menu_nazo_text2" layer="1" x="390" y="509" size="22" color="white" text="&tf.menu_nazo_text2" overwrite="true"]
+[ptext name="menu_nazo_text3" layer="1" x="390" y="544" size="22" color="white" text="&tf.menu_nazo_text3" overwrite="true"]
+[ptext name="menu_nazo_text4" layer="1" x="390" y="579" size="22" color="white" text="&tf.menu_nazo_text4" overwrite="true"]
+[ptext name="menu_nazo_prefix" layer="1" x="390" y="614" size="22" color="white" text="&tf.menu_nazo_prefix" overwrite="true"]
+[ptext name="menu_nazo_red" layer="1" x="470" y="614" size="22" color="red" text="&tf.menu_nazo_red" bold="true" overwrite="true"]
+[ptext name="menu_nazo_suffix" layer="1" x="620" y="614" size="22" color="white" text="&tf.menu_nazo_suffix" overwrite="true"]
 [if exp="tf.menu_nazo_selected > 0"]
 [ptext name="menu_nazo_page" layer="1" x="836" y="124" size="22" width="94" align="center" color="white" text="&tf.menu_nazo_page_label" overwrite="true"]
 [if exp="tf.menu_nazo_page_total > 1"]
@@ -457,15 +402,13 @@ $("#menu_preview_image").attr("src", encodeURI(nazoSrc).replace(/#/g, "%23"));
 [if exp="tf.menu_doc_image != ''"]
 [iscript]
 var docSrc = "./data/fgimage/" + TYRANO.kag.variable.tf.menu_doc_image;
-$("#menu_preview_image").remove();
-$("#root_layer_game").append('<img id="menu_preview_image" style="position:absolute;left:390px;top:170px;width:500px;height:280px;z-index:40;pointer-events:none;object-fit:contain;background:rgba(0,0,0,0.35);" />');
-$("#menu_preview_image").attr("src", encodeURI(docSrc).replace(/#/g, "%23"));
+window.menuSetPreviewImage(encodeURI(docSrc).replace(/#/g, "%23"), 390, 170, 500, 280);
 [endscript]
 [else]
 [ptext name="menu_doc_img_text" layer="1" x="390" y="170" size="24" color="white" text="&tf.menu_doc_img" bold="true" overwrite="true"]
 [endif]
-[ptext name="menu_doc_text1" layer="1" x="390" y="470" size="22" color="white" text="&tf.menu_doc_text1" overwrite="true"]
-[ptext name="menu_doc_text2" layer="1" x="390" y="510" size="22" color="white" text="&tf.menu_doc_text2" overwrite="true"]
+[ptext name="menu_doc_text1" layer="1" x="390" y="494" size="22" color="white" text="&tf.menu_doc_text1" overwrite="true"]
+[ptext name="menu_doc_text2" layer="1" x="390" y="534" size="22" color="white" text="&tf.menu_doc_text2" overwrite="true"]
 [if exp="tf.menu_doc_selected > 0"]
 [ptext name="menu_doc_page" layer="1" x="836" y="124" size="22" width="94" align="center" color="white" text="&tf.menu_doc_page_label" overwrite="true"]
 [if exp="tf.menu_doc_page_total > 1"]
@@ -482,7 +425,7 @@ $("#menu_preview_image").attr("src", encodeURI(docSrc).replace(/#/g, "%23"));
 [ptext name="menu_map_header" layer="1" x="90" y="120" size="28" color="white" text="マップ" bold="true"]
 [iscript]
 var mapSrc = "./data/bgimage/" + TYRANO.kag.variable.tf.menu_map_image;
-$("#menu_preview_image").remove();
+if (window.menuClearPreviewImage) window.menuClearPreviewImage();
 $("#root_layer_game").append('<img id="menu_preview_image" style="position:absolute;left:250px;top:130px;width:760px;height:520px;z-index:40;pointer-events:none;object-fit:contain;background:rgba(0,0,0,0.35);" />');
 $("#menu_preview_image").attr("src", encodeURI(mapSrc).replace(/#/g, "%23"));
 [endscript]
@@ -515,7 +458,7 @@ var isMenuTarget = function (t) {
 // 下層UIはパネルより背面へ（ただしメニュー要素は除外）
 root.find(".layer:visible").children().each(function () {
     var el = $(this);
-    if (el.is("#menu_green_overlay, #menu_text_panels, #menu_preview_image")) return;
+    if (el.is("#menu_green_overlay, #menu_text_panels, #menu_preview_image, #menu_preview_frame")) return;
     var name = el.attr("name") || "";
     var target = el.attr("data-event-target") || "";
     var isMenu = name.indexOf("menu_") === 0 || isMenuTarget(target);
@@ -665,24 +608,14 @@ window.menuApplyNazoPage(5, 1);
 *nazo_page_prev
 [if exp="tf.menu_nazo_selected <= 0"][jump target="*refresh_menu"][endif]
 [iscript]
-(function () {
-    var tf = TYRANO.kag.variable.tf;
-    var next = (tf.menu_nazo_page || 1) - 1;
-    if (next < 1) next = tf.menu_nazo_page_total || 1;
-    window.menuApplyNazoPage(tf.menu_nazo_selected, next);
-})();
+window.menuStepNazoPage(-1);
 [endscript]
 [jump target="*refresh_menu"]
 
 *nazo_page_next
 [if exp="tf.menu_nazo_selected <= 0"][jump target="*refresh_menu"][endif]
 [iscript]
-(function () {
-    var tf = TYRANO.kag.variable.tf;
-    var next = (tf.menu_nazo_page || 1) + 1;
-    if (next > (tf.menu_nazo_page_total || 1)) next = 1;
-    window.menuApplyNazoPage(tf.menu_nazo_selected, next);
-})();
+window.menuStepNazoPage(1);
 [endscript]
 [jump target="*refresh_menu"]
 
@@ -762,24 +695,14 @@ window.menuApplyDocPage(10, 1);
 *doc_page_prev
 [if exp="tf.menu_doc_selected <= 0"][jump target="*refresh_menu"][endif]
 [iscript]
-(function () {
-    var tf = TYRANO.kag.variable.tf;
-    var next = (tf.menu_doc_page || 1) - 1;
-    if (next < 1) next = tf.menu_doc_page_total || 1;
-    window.menuApplyDocPage(tf.menu_doc_selected, next);
-})();
+window.menuStepDocPage(-1);
 [endscript]
 [jump target="*refresh_menu"]
 
 *doc_page_next
 [if exp="tf.menu_doc_selected <= 0"][jump target="*refresh_menu"][endif]
 [iscript]
-(function () {
-    var tf = TYRANO.kag.variable.tf;
-    var next = (tf.menu_doc_page || 1) + 1;
-    if (next > (tf.menu_doc_page_total || 1)) next = 1;
-    window.menuApplyDocPage(tf.menu_doc_selected, next);
-})();
+window.menuStepDocPage(1);
 [endscript]
 [jump target="*refresh_menu"]
 
@@ -798,7 +721,7 @@ $("#root_layer_game [data-menu-force='front'], #root_layer_game [data-menu-force
 });
 $("#menu_green_overlay").remove();
 $("#menu_text_panels").remove();
-$("#menu_preview_image").remove();
+if (window.menuClearPreviewImage) window.menuClearPreviewImage();
 [endscript]
 [awakegame]
 

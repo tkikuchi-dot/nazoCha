@@ -14,7 +14,7 @@
 [resetfont  ]
 [tb_show_message_window  ]
 [tb_start_tyrano_code]
-[eval exp="f.unlock_nazo_a = true"]
+[eval exp="f.unlock_nazo_a = true; f.unlock_nazo_a_p1 = true"]
 [_tb_end_tyrano_code]
 
 [tb_start_text mode=1 ]
