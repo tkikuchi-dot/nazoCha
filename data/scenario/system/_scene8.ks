@@ -1,0 +1,7 @@
+[preload  storage="./data/bgimage/大浴場中.webp"  ]
+[preload  storage="./data/fgimage/default/洗浄後.webp"  ]
+[preload  storage="./data/bgimage/東廊下.webp"  ]
+[preload  storage="./data/bgimage/物置.webp"  ]
+[preload  storage="./data/bgimage/bg_base.webp"  ]
+[preload  storage="./data/fgimage/default/休憩室_回想.webp"  ]
+[return]

@@ -1,0 +1,6 @@
+[preload  storage="./data/bgimage/黒背景.webp"  ]
+[preload  storage="./data/fgimage/default/一日前.webp"  ]
+[preload  storage="./data/bgimage/title.webp"  ]
+[preload  storage="./data/fgimage/default/招待状.webp"  ]
+[preload  storage="./data/fgimage/default/GAMEOVER.webp"  ]
+[return]

@@ -1,0 +1,5 @@
+[preload  storage="./data/bgimage/Cの部屋.webp"  ]
+[preload  storage="./data/fgimage/default/raincoat.webp"  ]
+[preload  storage="./data/fgimage/default/knife.webp"  ]
+[preload  storage="./data/fgimage/default/メモ.webp"  ]
+[return]
