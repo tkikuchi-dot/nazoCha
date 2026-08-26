@@ -68,27 +68,198 @@ var makeDocPlaceholder = function (title, pageNo) {
 
 window.menuNazoPages = {
     1: {
-        1: { title: "志岐間 春恵", text1: "職業 主婦", text2: "撞木橋近くの屋敷に住む主婦。", text3: "約1年前に11歳の息子・修一を誘拐された末に亡くしている。", text4: "騒動をもみ消された挙げ句、犯人不明に苛立っている。", prefix: "探偵・", red: "櫂 利飛太", suffix: "に真相究明と犯人捜しを依頼した。", img: "画像：ナゾA", image: "chara/1/shigima_harue.png" },
+        1: {
+            title: "志岐間 春恵",
+            text1: "職業 主婦",
+            text2: "撞木橋近くの屋敷に住む主婦。",
+            text3: "約1年前に11歳の息子・修一を誘拐された末に亡くしている。",
+            text4: "騒動をもみ消された挙げ句、犯人不明に苛立っている。",
+            prefix: "探偵・",
+            red: "櫂 利飛太",
+            suffix: "に真相究明と犯人捜しを依頼した。",
+            img: "画像：ナゾA",
+            image: "chara/1/shigima_harue.png"
+        },
         2: makeNazoPlaceholder("ナゾA", 2),
         3: makeNazoPlaceholder("ナゾA", 3)
     },
-    2: { 1: { title: "ナゾB", text1: "ナゾBの説明テキスト（仮）", text2: "ここに詳細を書きます。", text3: "", text4: "", prefix: "", red: "", suffix: "", img: "画像：ナゾB（未設定）", image: "" }, 2: makeNazoPlaceholder("ナゾB", 2), 3: makeNazoPlaceholder("ナゾB", 3) },
-    3: { 1: { title: "ナゾC", text1: "ナゾCの説明テキスト（仮）", text2: "ここに詳細を書きます。", text3: "", text4: "", prefix: "", red: "", suffix: "", img: "画像：ナゾC（未設定）", image: "" }, 2: makeNazoPlaceholder("ナゾC", 2), 3: makeNazoPlaceholder("ナゾC", 3) },
-    4: { 1: { title: "ナゾD", text1: "ナゾDの説明テキスト（仮）", text2: "ここに詳細を書きます。", text3: "", text4: "", prefix: "", red: "", suffix: "", img: "画像：ナゾD（未設定）", image: "" }, 2: makeNazoPlaceholder("ナゾD", 2), 3: makeNazoPlaceholder("ナゾD", 3) },
-    5: { 1: { title: "ナゾE", text1: "ナゾEの説明テキスト（仮）", text2: "ここに詳細を書きます。", text3: "", text4: "", prefix: "", red: "", suffix: "", img: "画像：ナゾE（未設定）", image: "" }, 2: makeNazoPlaceholder("ナゾE", 2), 3: makeNazoPlaceholder("ナゾE", 3) }
+    2: {
+        1: {
+            title: "ナゾB",
+            text1: "ナゾBの説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            text3: "",
+            text4: "",
+            prefix: "",
+            red: "",
+            suffix: "",
+            img: "画像：ナゾB（未設定）",
+            image: ""
+        },
+        2: makeNazoPlaceholder("ナゾB", 2),
+        3: makeNazoPlaceholder("ナゾB", 3)
+    },
+    3: {
+        1: {
+            title: "ナゾC",
+            text1: "ナゾCの説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            text3: "",
+            text4: "",
+            prefix: "",
+            red: "",
+            suffix: "",
+            img: "画像：ナゾC（未設定）",
+            image: ""
+        },
+        2: makeNazoPlaceholder("ナゾC", 2),
+        3: makeNazoPlaceholder("ナゾC", 3)
+    },
+    4: {
+        1: {
+            title: "ナゾD",
+            text1: "ナゾDの説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            text3: "",
+            text4: "",
+            prefix: "",
+            red: "",
+            suffix: "",
+            img: "画像：ナゾD（未設定）",
+            image: ""
+        },
+        2: makeNazoPlaceholder("ナゾD", 2),
+        3: makeNazoPlaceholder("ナゾD", 3)
+    },
+    5: {
+        1: {
+            title: "ナゾE",
+            text1: "ナゾEの説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            text3: "",
+            text4: "",
+            prefix: "",
+            red: "",
+            suffix: "",
+            img: "画像：ナゾE（未設定）",
+            image: ""
+        },
+        2: makeNazoPlaceholder("ナゾE", 2),
+        3: makeNazoPlaceholder("ナゾE", 3)
+    }
 };
 
 window.menuDocPages = {
-    1: { 1: { title: "資料1", text1: "資料1の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料1（未設定）", image: "" }, 2: makeDocPlaceholder("資料1", 2), 3: makeDocPlaceholder("資料1", 3) },
-    2: { 1: { title: "資料2", text1: "資料2の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料2（未設定）", image: "" }, 2: makeDocPlaceholder("資料2", 2), 3: makeDocPlaceholder("資料2", 3) },
-    3: { 1: { title: "資料3", text1: "資料3の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料3（未設定）", image: "" }, 2: makeDocPlaceholder("資料3", 2), 3: makeDocPlaceholder("資料3", 3) },
-    4: { 1: { title: "資料4", text1: "資料4の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料4（未設定）", image: "" }, 2: makeDocPlaceholder("資料4", 2), 3: makeDocPlaceholder("資料4", 3) },
-    5: { 1: { title: "資料5", text1: "資料5の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料5（未設定）", image: "" }, 2: makeDocPlaceholder("資料5", 2), 3: makeDocPlaceholder("資料5", 3) },
-    6: { 1: { title: "資料6", text1: "資料6の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料6（未設定）", image: "" }, 2: makeDocPlaceholder("資料6", 2), 3: makeDocPlaceholder("資料6", 3) },
-    7: { 1: { title: "資料7", text1: "資料7の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料7（未設定）", image: "" }, 2: makeDocPlaceholder("資料7", 2), 3: makeDocPlaceholder("資料7", 3) },
-    8: { 1: { title: "資料8", text1: "資料8の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料8（未設定）", image: "" }, 2: makeDocPlaceholder("資料8", 2), 3: makeDocPlaceholder("資料8", 3) },
-    9: { 1: { title: "資料9", text1: "資料9の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料9（未設定）", image: "" }, 2: makeDocPlaceholder("資料9", 2), 3: makeDocPlaceholder("資料9", 3) },
-    10: { 1: { title: "資料10", text1: "資料10の説明テキスト（仮）", text2: "ここに詳細を書きます。", img: "画像：資料10（未設定）", image: "" }, 2: makeDocPlaceholder("資料10", 2), 3: makeDocPlaceholder("資料10", 3) }
+    1: {
+        1: {
+            title: "資料1",
+            text1: "資料1の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料1（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料1", 2),
+        3: makeDocPlaceholder("資料1", 3)
+    },
+    2: {
+        1: {
+            title: "資料2",
+            text1: "資料2の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料2（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料2", 2),
+        3: makeDocPlaceholder("資料2", 3)
+    },
+    3: {
+        1: {
+            title: "資料3",
+            text1: "資料3の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料3（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料3", 2),
+        3: makeDocPlaceholder("資料3", 3)
+    },
+    4: {
+        1: {
+            title: "資料4",
+            text1: "資料4の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料4（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料4", 2),
+        3: makeDocPlaceholder("資料4", 3)
+    },
+    5: {
+        1: {
+            title: "資料5",
+            text1: "資料5の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料5（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料5", 2),
+        3: makeDocPlaceholder("資料5", 3)
+    },
+    6: {
+        1: {
+            title: "資料6",
+            text1: "資料6の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料6（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料6", 2),
+        3: makeDocPlaceholder("資料6", 3)
+    },
+    7: {
+        1: {
+            title: "資料7",
+            text1: "資料7の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料7（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料7", 2),
+        3: makeDocPlaceholder("資料7", 3)
+    },
+    8: {
+        1: {
+            title: "資料8",
+            text1: "資料8の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料8（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料8", 2),
+        3: makeDocPlaceholder("資料8", 3)
+    },
+    9: {
+        1: {
+            title: "資料9",
+            text1: "資料9の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料9（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料9", 2),
+        3: makeDocPlaceholder("資料9", 3)
+    },
+    10: {
+        1: {
+            title: "資料10",
+            text1: "資料10の説明テキスト（仮）",
+            text2: "ここに詳細を書きます。",
+            img: "画像：資料10（未設定）",
+            image: ""
+        },
+        2: makeDocPlaceholder("資料10", 2),
+        3: makeDocPlaceholder("資料10", 3)
+    }
 };
 
 window.menuApplyNazoPage = function (selected, page) {
@@ -458,27 +629,37 @@ root.find("[name^='menu_'], .glink_button, [data-event-target]").each(function (
 ; -----------------------------
 *nazo_a
 [if exp="f.unlock_nazo_a != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyNazoPage(1, 1);[endscript]
+[iscript]
+window.menuApplyNazoPage(1, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *nazo_b
 [if exp="f.unlock_nazo_b != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyNazoPage(2, 1);[endscript]
+[iscript]
+window.menuApplyNazoPage(2, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *nazo_c
 [if exp="f.unlock_nazo_c != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyNazoPage(3, 1);[endscript]
+[iscript]
+window.menuApplyNazoPage(3, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *nazo_d
 [if exp="f.unlock_nazo_d != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyNazoPage(4, 1);[endscript]
+[iscript]
+window.menuApplyNazoPage(4, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *nazo_e
 [if exp="f.unlock_nazo_e != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyNazoPage(5, 1);[endscript]
+[iscript]
+window.menuApplyNazoPage(5, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *nazo_page_prev
@@ -510,52 +691,72 @@ root.find("[name^='menu_'], .glink_button, [data-event-target]").each(function (
 ; -----------------------------
 *doc_1
 [if exp="f.unlock_doc_1 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(1, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(1, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_2
 [if exp="f.unlock_doc_2 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(2, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(2, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_3
 [if exp="f.unlock_doc_3 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(3, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(3, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_4
 [if exp="f.unlock_doc_4 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(4, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(4, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_5
 [if exp="f.unlock_doc_5 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(5, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(5, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_6
 [if exp="f.unlock_doc_6 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(6, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(6, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_7
 [if exp="f.unlock_doc_7 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(7, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(7, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_8
 [if exp="f.unlock_doc_8 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(8, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(8, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_9
 [if exp="f.unlock_doc_9 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(9, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(9, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_10
 [if exp="f.unlock_doc_10 != true"][jump target="*refresh_menu"][endif]
-[iscript]window.menuApplyDocPage(10, 1);[endscript]
+[iscript]
+window.menuApplyDocPage(10, 1);
+[endscript]
 [jump target="*refresh_menu"]
 
 *doc_page_prev
