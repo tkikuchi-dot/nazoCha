@@ -1,0 +1,43 @@
+---
+description: nazoCha（旧0825）のプロジェクト記憶。会話が切れても0825時代の方針と地雷を引き継ぐ。
+alwaysApply: true
+---
+
+# nazoCha（旧 0825）
+
+このプロジェクトは旧名 `0825`。ティラノビルダー ADV（1280x720）。ゲーム内 ID はまだ `test`。
+
+## 作業場所
+
+本番はここ: `C:\ProgramWork_local\tyranobuilder_v306d_win_std\myproject\nazoCha`（旧 0825 を移したもの）。
+
+GitHub: `https://github.com/tkikuchi-dot/nazoCha.git`
+
+## メニュー構成
+
+- 常時ボタン: `common_ui.ks`（`fix` / `sleepgame`）。セーブ地点からのロードではシーン先頭の `[call]` は再実行されない。ボタンは FIX レイヤーのスナップショットで復元される。
+- メニュー画面: `document.ks`。タブは ナゾ / 資料 / マップ。文章・画像は `menu_data.ks`（シナリオタブのティラノスクリプト部品で編集）。
+- `make.ks` はロード時専用。今は `[return]` のみ。
+- `[cm]` はメッセージと一時ボタンを消す。FIX ボタンは消さない。
+- `tb_hide_message_window` は fixlayer も隠す。
+
+## フラグ（セーブされる f）
+
+- ナゾ開放: `f.unlock_nazo_a` 〜 `e`（一覧ボタン）
+- ナゾページ: `f.unlock_nazo_a_p1` など。枚数は `menu_data.ks` のページ数に合わせる（3枚固定ではない）。分母は開放済み枚数。
+- 資料ページ: `f.unlock_doc_1_p1` など。同上。
+- マップ: `f.unlock_map`
+- `[iscript]` と `[endscript]` は同じ行に書かない。同じ行だと閉じタグが無視され、次の `[jump target=...]` が JS 扱いになり `Unexpected identifier 'target'` になる。
+
+## 0825 でやったこと / 戻したこと
+
+- ナゾA〜E・資料のページめくり（`1/3`、◀▶）。データは `menu_data.ks` の `window.menuNazoPages` / `window.menuDocPages`。
+- 画像クリックで 150% 拡大、虫眼鏡＋。`window.menuSetPreviewImage`。
+- テキストを HTML 化して `\n` 改行しようとして、戻るボタンが壊れた。HTML 化は不採用。表示は `[ptext]` の text1〜text4。
+- `nazo_data.ks` / `doc_data.ks` への分割も、同じ不具合のあとスナップショット復元で削除済み。ビルダーで見たい場合は `data/scenario/` 直下に置く。
+- 戻るボタンはメニュー DOM（`name^='menu_'`、`#menu_text_panels`、`#menu_preview_image`、緑オーバーレイ）を残さず、ポポポ（popopo）を鳴らさず、即戻す。
+
+## 編集方針
+
+- 文章・画像パスと、座標・ボタン部品は分けたい意向がある。HTML 化はしない。
+- ティラノエンジン本体（`tyrano/`）は触らない。シナリオと `data/` を直す。
