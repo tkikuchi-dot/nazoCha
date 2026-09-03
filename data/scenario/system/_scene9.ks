@@ -5,6 +5,7 @@
 [preload  storage="./data/fgimage/default/mask.webp"  ]
 [preload  storage="./data/fgimage/default/mask_purple.webp"  ]
 [preload  storage="./data/bgimage/大広間中.webp"  ]
+[preload  storage="./data/fgimage/default/mask_normal.webp"  ]
 [preload  storage="./data/fgimage/default/物置法則.webp"  ]
 [preload  storage="./data/fgimage/default/機械制御室法則.webp"  ]
 [preload  storage="./data/bgimage/機械制御室_中.webp"  ]

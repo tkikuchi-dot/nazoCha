@@ -193,12 +193,13 @@
 
 ; ▼ まず加湿器の画像を表示（※お手元の加湿器の画像名に変更してください）
 [tb_image_show time="300" storage="default/humidifier.webp" width="226" height="352" x="503" y="70" _clickable_img="" ]
-#
-一般的な加湿器だ。[p]
+#ナゾA
+一般的な加湿器だ。[r]
+プラスドライバーで分解できそうだ。[p]
 
 ; ドライバーを持っている場合
 [if exp="f.item_driver == 1"]
-プラスドライバーで分解できそうだ。分解しますか？[p]
+分解しますか？[p]
 [link target="*open_humidifier"] 【分解する】 [endlink][r]
 [link target="*cancel_syokudo"] 【やめる】 [endlink]
 [s]

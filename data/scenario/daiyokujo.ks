@@ -27,7 +27,7 @@
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 大浴場[p]
 こんな事件が起きなければ心身ともにリラックスできる場所だったのかもしれない[p]
 [_tb_end_text]
@@ -38,16 +38,16 @@
 [wait  time="1000"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [jump  storage="daiyokujo.ks"  target="*start"  ]
-*
+*think
 
 [cm  ]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="600"  storage="default/ハートつみき.webp"  width="467"  height="331"  x="400"  y="100"  _clickable_img=""  ]
+[tb_image_show  time="600"  storage="default/ハートつみき.webp"  width="467"  height="331"  x="400"  y="100"  _clickable_img=""  name="img_31"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ナゾDさんは姿が変わっているけど[p]
 この状態の答えはすぐ出そうだな[p]
 [_tb_end_text]
@@ -85,7 +85,8 @@
 [tb_start_tyrano_code]
 *start_nazo
 [cm]
-
+#ナゾA
+ナゾDさん、昨日ナゾCさんに伝えたときのあなたの答えは・・・[p]
 ; ▼ ここでメッセージ枠を非表示にする！
 [tb_hide_message_window  ]
 
@@ -345,18 +346,60 @@
 [eval exp="f.answer = f.answer + 'ん'"]
 @jump target="*show_keyboard"
 
+; ===================================
+; ▼ 記号・変換ボタンの処理（上書きすり替え方式）
+; ===================================
 *c_daku
-[eval exp="f.answer = f.answer + '゛'"]
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1); // 最後の1文字を取得
+var rest = ans.slice(0, -1); // それ以外の文字
+// 濁音への変換辞書
+var map = {'か':'が','き':'ぎ','く':'ぐ','け':'げ','こ':'ご',
+'さ':'ざ','し':'じ','す':'ず','せ':'ぜ','そ':'ぞ',
+'た':'だ','ち':'ぢ','つ':'づ','て':'で','と':'ど',
+'は':'ば','ひ':'び','ふ':'ぶ','へ':'べ','ほ':'ぼ'};
+if (map[last]) f.answer = rest + map[last]; // 変換できればすり替え
+}
+[endscript]
 @jump target="*show_keyboard"
+
 *c_han
-[eval exp="f.answer = f.answer + '゜'"]
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1);
+var rest = ans.slice(0, -1);
+// 半濁音への変換辞書
+var map = {'は':'ぱ','ひ':'ぴ','ふ':'ぷ','へ':'ぺ','ほ':'ぽ'};
+if (map[last]) f.answer = rest + map[last];
+}
+[endscript]
 @jump target="*show_keyboard"
+
 *c_cho
+; 伸ばす棒はそのまま追加でOK
 [eval exp="f.answer = f.answer + 'ー'"]
 @jump target="*show_keyboard"
 
 *mod_small
-; 小文字変換の処理（必要であれば実装）
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1);
+var rest = ans.slice(0, -1);
+// 小文字への変換辞書
+var map = {'あ':'ぁ','い':'ぃ','う':'ぅ','え':'ぇ','お':'ぉ',
+'や':'ゃ','ゆ':'ゅ','よ':'ょ','つ':'っ','わ':'ゎ'};
+// 小文字から大文字に戻す辞書（連打した時用）
+var rev = {'ぁ':'あ','ぃ':'い','ぅ':'う','ぇ':'え','ぉ':'お',
+'ゃ':'や','ゅ':'ゆ','ょ':'よ','っ':'つ','ゎ':'わ'};
+
+if (map[last]) f.answer = rest + map[last];
+else if (rev[last]) f.answer = rest + rev[last];
+}
+[endscript]
 @jump target="*show_keyboard"
 
 ; ===================================
@@ -386,14 +429,14 @@
 [layopt layer="message0" visible="true"]
 
 [if exp="f.answer == 'してい'"]
-#
-ナゾEさんの答えは『してい』だ！[p]
+#ナゾA
+ナゾDさんの答えは『してい』だ！[p]
 ; ▼ 正解時のジャンプ
 @jump target="*true"
 [else]
-#ナゾE
+#ナゾD
 『[emb exp="f.answer"]』……？
-ち、違いますっ[p]
+いや、違うっすけど・・・[p]
 ; ▼ 不正解時はやり直し
 @jump target="*start"
 [endif]
@@ -410,7 +453,7 @@
 [_tb_end_text]
 
 [tb_start_tyrano_code]
-#
+#ナゾA
 よし、なんとか正解したぞ[p]
 
 ; ▼ フラグを立てる
@@ -419,8 +462,8 @@
 ; ▼ ここで全部揃ったかチェック！
 [if exp="f.answer1_1 == 1 && f.answer1_2 == 1 && f.answer1_3 == 1"]
 #茶々丸
-全員の答えが分かったようだニャ
-ちょうどナゾCの血も落ちたみたいだニャ
+全員の答えが分かったようだニャ[r]
+ちょうどナゾCの血も落ちたみたいだニャ[p]
 ナゾCの姿を確認するニャ[p]
 ; 次のシナリオへ飛ぶ
 @jump storage="scene8.ks" target="*start"

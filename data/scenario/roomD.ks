@@ -116,7 +116,7 @@ Dさんのものだろうか[p]
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 Dさんの部屋だが、自分の部屋とあまり変わらない[p]
 [_tb_end_text]
 
@@ -140,14 +140,14 @@ Dさんの部屋だが、自分の部屋とあまり変わらない[p]
 
 [tb_image_show time="300" storage="default/btn_neckless.webp" width="431" height="340" x="406" y="183" _clickable_img="" ]
 
-#
+#ナゾA
 銀でできたネックレスだ[r]
 Dさんのものだろうか[p]
 
 これなら電気が通るかもしれない[p]
 
 ; ▼ システムメッセージ
-#
+#ナゾA
 【 ネックレスを手に入れた！ 】[p]
 
 [tb_hide_message_window]
@@ -163,7 +163,7 @@ Dさんのものだろうか[p]
 
 *open_item2
 ; ▼ jump ではなく call を使う！
-[call storage="item2.ks" target="*start_item"]
+[call storage="item.ks" target="*start_item"]
 
 ; ▼ item.ks で [return] が実行されると、自動的に「ここ」に帰ってきます！
 ; 帰ってきたら、元の部屋の背景などを再表示してあげる
@@ -188,7 +188,7 @@ Dさんのものだろうか[p]
 [tb_show_message_window]
 ; ▼ ネックレスを持っている場合
 [if exp="f.item_necklace == 1"]
-#
+#ナゾA
 機械制御室に行ってネックレスを配線につなごう[p]
 
 [tb_hide_message_window]
@@ -197,7 +197,7 @@ Dさんのものだろうか[p]
 
 ; ▼ 持っていない場合
 [else]
-#
+#ナゾA
 電気を通せるものを探そう[p]
 
 [tb_hide_message_window]

@@ -1,5 +1,6 @@
 [_tb_system_call storage=system/_yugisitu.ks]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *start
 
 [cm  ]
@@ -29,7 +30,7 @@
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 遊戯室だ[p]
 ダーツにビリヤード、カラオケまである本格派だ[p]
 [_tb_end_text]
@@ -49,7 +50,7 @@
 [tb_image_show  time="600"  storage="default/B.webp"  width="467"  height="331"  x="400"  y="100"  _clickable_img=""  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ナゾBさんは昨日と姿が変わらないな[p]
 [_tb_end_text]
 
@@ -86,7 +87,7 @@
 
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ナゾBさん[p]
 昨日ナゾCさんに答えを伝えた時のあなたの答えは・・・[p]
 [_tb_end_text]
@@ -95,18 +96,18 @@
 [glink  color="btn_19_black"  storage="yugisitu.ks"  size="20"  text="②ですね"  x="965"  y="250"  width="140"  height=""  _clickable_img=""  target="*2"  ]
 [glink  color="btn_19_black"  storage="yugisitu.ks"  size="20"  text="③ですね"  x="965"  y="330"  width="140"  height=""  _clickable_img=""  target="*3"  ]
 [s  ]
-*1
+*2
 
 [tb_start_text mode=1 ]
-#
-①ですね[p]
+#ナゾA
+②ですね[p]
 #ナゾB
 まあその通りだ[p]
 つってもおれは実質3択だしな[p]
 [_tb_end_text]
 
 [tb_start_tyrano_code]
-#
+#ナゾA
 よし、なんとか正解したぞ[p]
 
 ; ▼ フラグを立てる
@@ -126,11 +127,11 @@
 @jump storage="yugisitu.ks" target="*start"
 [_tb_end_tyrano_code]
 
-*2
+*1
 
 [tb_start_text mode=1 ]
-#
-②ですね[p]
+#ナゾA
+①ですね[p]
 #ナゾB
 ちげーよ[p]
 ３択外してんじゃねーよ[p]
@@ -141,7 +142,7 @@
 *3
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ③ですね[p]
 #ナゾB
 ちげーよ[p]

@@ -1,6 +1,6 @@
 [_tb_system_call storage=system/_scene10.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *start
 
 [tb_start_text mode=1 ]
@@ -39,7 +39,11 @@
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[tb_image_show  time="1000"  storage="default/count.webp"  width="849"  height="479"  x="217"  y="13"  _clickable_img=""  name="img_19"  ]
+[tb_image_show  time="1000"  storage="default/count.webp"  width="849"  height="479"  x="217"  y="13"  _clickable_img=""  name="img_21"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_8 = true; f.unlock_doc_8_p1 = true"]
+[_tb_end_tyrano_code]
+
 [wait  time="1500"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -202,7 +206,7 @@ Eさんが出た音も聞こえませんでした[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[tb_image_show  time="600"  storage="default/手がかり.webp"  width="910"  height="250"  x="189"  y="189"  name="img_32"  ]
+[tb_image_show  time="600"  storage="default/手がかり.webp"  width="910"  height="250"  x="189"  y="189"  name="img_35"  ]
 [clickable  storage="scene10.ks"  x="189"  y="189"  width="242.6"  height="242.6"  target="*false"  ]
 [clickable  storage="scene10.ks"  x="516"  y="189"  width="242.6"  height="242.6"  target="*false"  ]
 [clickable  storage="scene10.ks"  x="848.4"  y="189"  width="242.6"  height="242.6"  target="*true2"  ]
@@ -480,7 +484,7 @@ Bさん、あなたの部屋はナゾCさんが倒れていた場所の目の前
 
 [cm  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 いいえ[font color="red" bold="true"]ナゾCさんを殺した犯人[resetfont]は[p]
 ナゾBさんでは[font color="red" bold="true"]ありません[resetfont]　[p]
 #ナゾB
@@ -601,9 +605,13 @@ Bさん、あなたの部屋はナゾCさんが倒れていた場所の目の前
 
 [chara_hide_all  time="300"  wait="true"  ]
 [chara_show  name="茶々丸"  time="600"  wait="false"  storage="chara/6/茶々丸.webp"  width="300"  height="202"  left="30"  top="180"  ]
-[chara_show  name="ナゾB"  time="600"  wait="false"  storage="chara/2/混戦.webp"  width="243"  height="170"  left="355"  top="180"  reflect="false"  ]
+[chara_show  name="ナゾB"  time="600"  wait="false"  storage="chara/2/nazob.webp"  width="243"  height="170"  left="355"  top="180"  reflect="false"  ]
 [chara_show  name="ナゾD"  time="600"  wait="false"  storage="chara/4/バードつみき.webp"  width="243"  height="170"  left="660"  top="180"  reflect="false"  ]
 [chara_show  name="ナゾE"  time="600"  wait="true"  storage="chara/5/杖賛成.webp"  width="243"  height="170"  left="965"  top="180"  reflect="false"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_b_p2 = true"]
+[_tb_end_tyrano_code]
+
 [tb_start_tyrano_code]
 [button graphic="btn_think.webp" target="*think" x="20" y="540"]
 [_tb_end_tyrano_code]
@@ -633,7 +641,7 @@ Bさん、あなたの部屋はナゾCさんが倒れていた場所の目の前
 [cm  ]
 [tb_image_hide  time="300"  ]
 [chara_hide_all  time="300"  wait="true"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="true"  storage="chara/2/混戦.webp"  width="473"  height="335"  left="408"  top="103"  reflect="false"  ]
+[chara_show  name="ナゾB"  time="600"  wait="true"  storage="chara/2/nazob.webp"  width="473"  height="335"  left="408"  top="103"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB

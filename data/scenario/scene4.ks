@@ -1,6 +1,6 @@
 [_tb_system_call storage=system/_scene4.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *start
 
 [bg  time="0"  method="crossfade"  storage="大広間中.webp"  ]
@@ -59,6 +59,10 @@ AさんとEさんは黒塗りの面積大きいから当てるの難しそうで
 ・・・・・[p]
 [_tb_end_text]
 
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_c = true; f.unlock_nazo_c_p1 = true"]
+[_tb_end_tyrano_code]
+
 [wait  time="1500"  ]
 [chara_move  name="ナゾC"  anim="true"  time="1000"  effect="easeOutQuad"  wait="false"  left="66"  top="180"  width="284"  height="200"  ]
 [chara_show  name="ナゾD"  time="1000"  wait="false"  left="855"  top="180"  width="284"  height="200"  storage="chara/4/ハートつみき.webp"  ]
@@ -79,7 +83,7 @@ AさんとEさんは黒塗りの面積大きいから当てるの難しそうで
 
 [tb_hide_message_window  ]
 [wait  time="1500"  ]
-[tb_image_show  time="1000"  storage="default/説明した.webp"  width="1280"  height="720"  name="img_26"  ]
+[tb_image_show  time="1000"  storage="default/説明した.webp"  width="1280"  height="720"  name="img_28"  ]
 [wait  time="1500"  ]
 [tb_image_hide  time="1000"  ]
 [tb_show_message_window  ]
@@ -93,7 +97,8 @@ Cさんもどうですか？[p]
 ごめんなさい[p]
 そういうことには興味ないの[p]
 #ナゾB
-じゃあ審判な[p]
+じゃあ審判ならどうだ？[p]
+答えがあってるか判定する役だ[p]
 それくらいだったら別にいいだろ？[p]
 #ナゾC
 別にいいわよ[p]
@@ -110,6 +115,13 @@ Cさんもどうですか？[p]
 [chara_show  name="ナゾC"  time="1000"  wait="false"  storage="chara/3/箱庭.webp"  width="284"  height="200"  left="85"  top="290"  reflect="false"  ]
 [chara_show  name="ナゾE"  time="1000"  wait="false"  storage="chara/5/家賛成.webp"  width="284"  height="200"  left="850"  top="150"  reflect="false"  ]
 [chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/ハートつみき.webp"  width="284"  height="200"  left="600"  top="290"  reflect="false"  ]
+[tb_start_tyrano_code]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="205" y="210"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="420" y="70"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="720" y="210"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="970" y="70"  time="1000" wait="true"]
+[_tb_end_tyrano_code]
+
 [clickable  storage="scene4.ks"  x="300"  y="150"  width="284"  height="200"  target="*talkB"  ]
 [clickable  storage="scene4.ks"  x="85"  y="290"  width="284"  height="200"  target="*talkC"  ]
 [clickable  storage="scene4.ks"  x="600"  y="290"  width="284"  height="200"  target="*talkD"  ]
@@ -117,8 +129,10 @@ Cさんもどうですか？[p]
 [s  ]
 *talkB
 
-[chara_hide_all  time="1000"  wait="true"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="true"  storage="chara/2/混戦.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
+[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
+[tb_image_hide  time="300"  ]
+[chara_hide_all  time="300"  wait="true"  ]
+[chara_show  name="ナゾB"  time="600"  wait="true"  storage="chara/2/混戦.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
@@ -126,12 +140,14 @@ Cさんもどうですか？[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[chara_hide  name="ナゾB"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾB"  time="300"  wait="true"  pos_mode="true"  ]
 [jump  storage="scene4.ks"  target="*tell_ans"  ]
 *talkD
 
-[chara_hide_all  time="1000"  wait="true"  ]
-[chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/ハートつみき.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
+[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
+[tb_image_hide  time="300"  ]
+[chara_hide_all  time="300"  wait="true"  ]
+[chara_show  name="ナゾD"  time="600"  wait="true"  storage="chara/4/ハートつみき.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾD
@@ -139,40 +155,41 @@ Aさんの答えまじで分かんないっすね[p]
 ヒントとかないんすか？[p]
 [_tb_end_text]
 
-[glink  color="btn_19_black"  storage="scene4.ks"  size="20"  target="*hint"  text="うーん"  x="900"  y="150"  width="140"  height="51"  _clickable_img=""  ]
-[glink  color="btn_19_black"  storage="scene4.ks"  size="20"  target="*hint2"  text="えーっと"  x="900"  y="300"  width="140"  height="51"  _clickable_img=""  ]
+[glink  color="btn_19_black"  storage="scene4.ks"  size="20"  target="*hint"  text="うーん"  x="970"  y="150"  width="140"  height="51"  _clickable_img=""  ]
+[glink  color="btn_19_black"  storage="scene4.ks"  size="20"  target="*hint2"  text="えーっと"  x="970"  y="300"  width="140"  height="51"  _clickable_img=""  ]
 [s  ]
 *hint
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 うーん、ないかな[p]
 #ナゾＤ
 えー、残念っす[p]
 [_tb_end_text]
 
-[chara_hide  name="ナゾD"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾD"  time="300"  wait="true"  pos_mode="true"  ]
 [tb_hide_message_window  ]
 [jump  storage="scene4.ks"  target="*tell_ans"  ]
 *hint2
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 えーっと、ないかな[p]
 #ナゾＤ
 えー、残念っす[p]
 [_tb_end_text]
 
-[chara_hide  name="ナゾD"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾD"  time="300"  wait="true"  pos_mode="true"  ]
 [tb_hide_message_window  ]
 [jump  storage="scene4.ks"  target="*tell_ans"  ]
 *talkE
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-[chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/家賛成.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
+[tb_image_hide  time="300"  ]
+[chara_hide_all  time="300"  wait="true"  ]
+[chara_show  name="ナゾE"  time="600"  wait="true"  storage="chara/5/家賛成.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾE
@@ -180,13 +197,14 @@ Aさんの答えまじで分かんないっすね[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[chara_hide  name="ナゾE"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾE"  time="300"  wait="true"  pos_mode="true"  ]
 [jump  storage="scene4.ks"  target="*tell_ans"  ]
 *talkC
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
+[tb_image_hide  time="300"  ]
+[chara_hide_all  time="300"  wait="true"  ]
+[chara_show  name="ナゾC"  time="600"  wait="true"  storage="chara/3/箱庭.webp"  width="533"  height="379"  left="350"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾC
@@ -197,8 +215,6 @@ Aさんの答えまじで分かんないっすね[p]
 [glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="965"  y="180"  width="140"  height="52"  text="教える"  _clickable_img=""  target="*true"  ]
 [glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="965"  y="300"  width="140"  height="52"  text="教えない"  _clickable_img=""  target="*false"  ]
 [s  ]
-[chara_hide  name="ナゾB"  time="1000"  wait="true"  pos_mode="true"  ]
-[jump  storage="scene4.ks"  target="*tell_ans"  ]
 *false
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
@@ -207,7 +223,7 @@ Aさんの答えまじで分かんないっすね[p]
 [tb_start_text mode=1 ]
 #ナゾC
 何しに来たの？[p]
-#
+#ナゾA
 ・・・・・・[p]
 [_tb_end_text]
 
@@ -219,7 +235,7 @@ Aさんの答えまじで分かんないっすね[p]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （ここに来る前後で謎が変わっちゃったけど）[p]
 （Cさんは変化したの知らないし）[p]
 （答えも変わってないから答えだけ伝えればいいか）[p]
@@ -230,17 +246,17 @@ Aさんの答えまじで分かんないっすね[p]
 [wait  time="1500"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 です[p]
 #ナゾC
 はい、分かりました[p]
 [_tb_end_text]
 
-[chara_hide  name="ナゾC"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾC"  time="300"  wait="true"  pos_mode="true"  ]
 [tb_hide_message_window  ]
 [wait  time="1500"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="true"  storage="chara/2/混戦.webp"  width="533"  height="379"  left="80"  top="108"  ]
-[chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/ハートつみき.webp"  width="533"  height="379"  left="650"  top="108"  ]
+[chara_show  name="ナゾB"  time="600"  wait="false"  storage="chara/2/混戦.webp"  width="533"  height="379"  left="80"  top="108"  ]
+[chara_show  name="ナゾD"  time="600"  wait="true"  storage="chara/4/ハートつみき.webp"  width="533"  height="379"  left="650"  top="108"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
@@ -252,7 +268,7 @@ Aさんの答えまじで分かんないっすね[p]
 [_tb_end_text]
 
 [chara_hide_all  time="1000"  wait="true"  ]
-[tb_image_show  time="1000"  storage="default/MAP_west.webp"  width="674"  height="474"  x="306"  y="39"  _clickable_img=""  name="img_116"  ]
+[tb_image_show  time="1000"  storage="default/MAP_west.webp"  width="674"  height="474"  x="306"  y="39"  _clickable_img=""  name="img_123"  ]
 [tb_start_text mode=1 ]
 #ナゾB
 まずは館の西側から探索するか[p]
@@ -266,7 +282,7 @@ DとEは大広間で待っていててくれ[p]
 
 [tb_hide_message_window  ]
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="1000"  storage="default/time_19.webp"  width="1280"  height="720"  name="img_120"  ]
+[tb_image_show  time="1000"  storage="default/time_19.webp"  width="1280"  height="720"  name="img_127"  ]
 [wait  time="1500"  ]
 [tb_image_hide  time="1000"  ]
 [wait  time="1500"  ]
@@ -280,6 +296,35 @@ DとEは大広間で待っていててくれ[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
+[tb_start_tyrano_code]
+; =====================================
+; ▼ 探索開始 カットイン演出
+; =====================================
+[layopt layer="1" visible="true"]
+
+; folder="image" を削除し、デフォルトの fgimage フォルダを読ませます
+[image layer="1" name="obi" storage="default/obi.webp" x="1280" y="300"]
+[image layer="1" name="text" storage="default/text_tansakukaisi.webp" x="1400" y="340"]
+
+; スライドイン（左へ動く）
+[anim name="obi" left="0" time="300"]
+[anim name="text" left="450" time="400"]
+[wa]
+
+; 1秒間ストップして見せる
+[wait time="1500"]
+
+; スライドアウト（さらに左へ消える）
+[anim name="obi" left="-1280" time="300"]
+[anim name="text" left="-1280" time="300"]
+[wa]
+
+; アニメーションが終わった画像を綺麗に消去
+[free name="obi" layer="1"]
+[free name="text" layer="1"]
+; =====================================
+[_tb_end_tyrano_code]
+
 [chara_hide  name="ナゾB"  time="1000"  wait="true"  pos_mode="true"  ]
 *start_explore_west
 
@@ -287,6 +332,12 @@ DとEは大広間で待っていててくれ[p]
 [tb_start_tyrano_code]
 [image storage="default/混戦.webp" layer="1" page="fore" visible="true" x="100" y="160" width="284" height="200" time="1000" wait="false"]
 [image storage="default/箱庭.webp" layer="1" page="fore" visible="true" x="550" y="160" width="284" height="200" time="1000" wait="false"]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="210" y="80"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="660" y="80"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="600" y="400"  time="1000" wait="true"]
 [_tb_end_tyrano_code]
 
 [tb_show_message_window  ]
@@ -298,7 +349,7 @@ DとEは大広間で待っていててくれ[p]
 [glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="965"  y="100"  width="140"  height="51"  text="Aの部屋"  _clickable_img=""  target="*roomA"  ]
 [glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="965"  y="200"  width="140"  height="51"  text="Bの部屋"  _clickable_img=""  target="*roomB"  ]
 [glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="965"  y="300"  width="140"  height="51"  text="Cの部屋"  _clickable_img=""  target="*roomC"  ]
-[tb_image_show  time="200"  storage="default/btn_think.webp"  width="164"  height="71"  x="56"  y="400"  _clickable_img=""  name="img_139"  ]
+[tb_image_show  time="200"  storage="default/btn_think.webp"  width="164"  height="71"  x="56"  y="400"  _clickable_img=""  name="img_148"  ]
 [clickable  storage="scene4.ks"  x="0"  y="0"  width="1280"  height="720"  target="*rouka"  ]
 [clickable  storage="scene4.ks"  x="100"  y="160"  width="284"  height="200"  target="*talkB2"  ]
 [clickable  storage="scene4.ks"  x="550"  y="160"  width="284"  height="200"  target="*talkC2"  ]
@@ -403,7 +454,7 @@ DとEは大広間で待っていててくれ[p]
 [wait  time="2000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ここがぼくの部屋か[p]
 とくに気になるところはないな[p]
 廊下に戻って二人と合流しよう[p]
@@ -420,7 +471,7 @@ DとEは大広間で待っていててくれ[p]
 #ナゾC
 ええ、確認したけど[p]
 普通の個室って感じで特に何もなかったわ[p]
-#
+#ナゾA
 ぼくの方もそうでした[p]
 #ナゾB
 おれもそうだ[p]
@@ -434,7 +485,7 @@ DとEは大広間で待っていててくれ[p]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="284"  height="200"  left="66"  top="180"  ]
 [chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="284"  height="200"  left="477"  top="180"  ]
-[tb_image_show  time="1000"  storage="default/door/厨房.webp"  width="262"  height="481"  x="834"  y="43"  _clickable_img=""  name="img_221"  ]
+[tb_image_show  time="1000"  storage="default/door/厨房.webp"  width="262"  height="481"  x="834"  y="43"  _clickable_img=""  name="img_230"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
@@ -456,143 +507,31 @@ DとEは大広間で待っていててくれ[p]
 …一応試しにやってみてもやっぱり開かないわ[p]
 #ナゾB
 あとはあからさまに見えてる部分にその枠があるAか[p]
-#
+#ナゾA
 あ、開けてみますね[p]
 [_tb_end_text]
 
-[tb_hide_message_window  ]
-[tb_image_hide  time="1000"  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-*lets_open
-
-[tb_start_tyrano_code]
-[image storage="default/混戦.webp" layer="1" page="fore" visible="true" x="66" y="180" width="284" height="200" time="1000" wait="false"]
-[image storage="default/箱庭.webp" layer="1" page="fore" visible="true" x="477" y="180" width="284" height="200" time="1000" wait="false"]
-[image storage="default/door/厨房.webp" layer="1" page="fore" visible="true" x="834" y="43" width="262" height="481" time="1000" wait="false"]
-[_tb_end_tyrano_code]
-
-[tb_image_show  time="200"  storage="default/btn_think.webp"  width="164"  height="71"  x="56"  y="400"  _clickable_img=""  name="img_233"  ]
-[clickable  storage="scene4.ks"  x="0"  y="0"  width="1280"  height="720"  target="*rouka2"  ]
-[clickable  storage="scene4.ks"  x="66"  y="180"  width="284"  height="200"  target="*talkB3"  ]
-[clickable  storage="scene4.ks"  x="477"  y="180"  width="284"  height="200"  target="*talkC3"  ]
-[clickable  storage="scene4.ks"  x="834"  y="43"  width="262"  height="481"  target="*room_tyubo"  ]
-[clickable  storage="scene4.ks"  x="56"  y="400"  width="164"  height="71"  target="*think_rouka2"  ]
-[s  ]
-*talkB3
-
-[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[tb_image_hide  time="1000"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="true"  storage="chara/2/混戦.webp"  width="505"  height="357"  left="370"  top="108"  reflect="false"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-#ナゾB
-・・・早く開けろよ[p]
-[_tb_end_text]
-
-[tb_hide_message_window  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-[jump  storage="scene4.ks"  target="*lets_open"  ]
-*talkC3
-
-[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[tb_image_hide  time="1000"  ]
-[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="505"  height="357"  left="370"  top="108"  reflect="false"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-#ナゾC
-あなたの番でしょ[p]
-はやく開けなさいよ[p]
-[_tb_end_text]
-
-[tb_hide_message_window  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-[jump  storage="scene4.ks"  target="*lets_open"  ]
-*think_rouka2
-
-[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[tb_image_hide  time="1000"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-厨房の扉の枠・・・[p]
-ぼくにも同じものが使われている[p]
-開くのだろうか？[p]
-[_tb_end_text]
-
-[tb_hide_message_window  ]
-[jump  storage="scene4.ks"  target="*lets_open"  ]
-*room_tyubo
-
-[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[tb_image_hide  time="1000"  ]
-[tb_image_show  time="1000"  storage="default/door/厨房.webp"  width="237"  height="434"  x="504"  y="87"  _clickable_img=""  name="img_272"  ]
-[glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="800"  y="225"  width="140"  height="51"  text="開ける"  _clickable_img=""  target="*open"  ]
-[glink  color="btn_19_black"  storage="scene4.ks"  size="20"  x="800"  y="330"  width="140"  height="51"  text="開けない"  _clickable_img=""  target="*dont_open"  ]
-[s  ]
-*dont_open
-
-[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[tb_image_hide  time="1000"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="505"  height="357"  left="80"  top="108"  reflect="false"  ]
-[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="505"  height="357"  left="675"  top="108"  reflect="false"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-#ナゾB
-ふざけてないで開けろよ[p]
-#ナゾC
-早くしてくれる？[p]
-#
-す、すみません・・・[p]
-[_tb_end_text]
-
-[tb_hide_message_window  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-[jump  storage="scene4.ks"  target="*lets_open"  ]
-*rouka2
-
-[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[chara_hide_all  time="1000"  wait="true"  ]
-[tb_image_hide  time="1000"  ]
-[camera  time="8000"  zoom="1"  wait="false"  x="150"  layer="base"  ease_type="linear"  ]
-[tb_start_text mode=1 ]
-館の西側にある廊下だ[p]
-ぼくの部屋はこの廊下に面している[p]
-[_tb_end_text]
-
-[mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
-[reset_camera  time="1000"  wait="true"  ]
-[wait  time="3000"  ]
-[mask_off  time="1000"  effect="fadeOut"  ]
-[jump  storage="scene4.ks"  target="*lets_open"  ]
-*open
-
-[playse  volume="100"  time="1000"  buf="0"  storage="選択8.mp3"  ]
-[cm  ]
-[tb_image_hide  time="1000"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-#
-開けてみますね[p]
-[_tb_end_text]
-
+[chara_hide_all  time="300"  wait="false"  ]
+[tb_image_hide  time="300"  ]
 [playse  volume="100"  time="1000"  buf="0"  storage="sei_ge_door_rock01.mp3"  ]
 [playse  volume="100"  time="1000"  buf="0"  storage="不気味な出現音2.mp3"  ]
-[tb_image_show  time="1000"  storage="default/法則：厨房.webp"  width="581"  height="413"  x="350"  y="95"  _clickable_img=""  name="img_307"  ]
+[tb_image_show  time="1000"  storage="default/法則：厨房.webp"  width="581"  height="413"  x="350"  y="95"  _clickable_img=""  name="img_241"  ]
 [wait  time="1000"  ]
 [tb_alert_dialog  label_ok="OK"  text="「法則：厨房」を入手しました"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_1_p3 = true"]
+[_tb_end_tyrano_code]
+
 [tb_start_text mode=1 ]
-#
+#ナゾA
 あ、開きました[p]
 #ナゾB
 姿はどうだ？[p]
 [_tb_end_text]
 
-[tb_image_show  time="1000"  storage="default/数字.webp"  width="533"  height="379"  x="389"  y="100"  _clickable_img=""  name="img_311"  ]
+[chara_hide_all  time="300"  wait="false"  ]
+[tb_image_hide  time="300"  ]
+[tb_image_show  time="1000"  storage="default/数字.webp"  width="533"  height="379"  x="389"  y="100"  _clickable_img=""  name="img_248"  ]
 [tb_start_text mode=1 ]
 #ナゾC
 変わってなさそうね[p]
@@ -602,8 +541,8 @@ DとEは大広間で待っていててくれ[p]
 
 [tb_image_hide  time="1000"  ]
 [bg  time="1000"  method="fadeInRight"  storage="厨房中.webp"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="505"  height="357"  left="80"  top="108"  reflect="false"  ]
-[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="533"  height="379"  left="675"  top="108"  reflect="false"  ]
+[chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="433"  height="306"  left="153"  top="132"  reflect="false"  ]
+[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="433"  height="306"  left="664"  top="132"  reflect="false"  ]
 [tb_start_text mode=1 ]
 #ナゾB
 中はこんな感じか[p]
@@ -619,8 +558,8 @@ DとEは大広間で待っていててくれ[p]
 [playse  volume="50"  time="1000"  buf="0"  storage="scene_transition_footstep_lowbit_01_slow.ogg"  ]
 [bg  time="300"  method="crossfade"  storage="西廊下.webp"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="505"  height="357"  left="80"  top="108"  reflect="false"  ]
-[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="505"  height="357"  left="675"  top="108"  reflect="false"  ]
+[chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="433"  height="306"  left="153"  top="132"  reflect="false"  ]
+[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="433"  height="306"  left="664"  top="132"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
@@ -632,16 +571,16 @@ DとEは大広間で待っていててくれ[p]
 [tb_start_text mode=1 ]
 #ナゾB
 開けられないな[p]
-#
+#ナゾA
 ぼくもこの枠はないから[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="1000"  buf="0"  storage="doornob2.ogg"  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 開けられないですね[p]
 #ナゾC
-私は開けられるはずよ[p]
+私は開けられるんじゃないかしら[p]
 [_tb_end_text]
 
 [chara_hide_all  time="1000"  wait="true"  ]
@@ -678,7 +617,7 @@ DとEは大広間で待っていててくれ[p]
 [tb_start_text mode=1 ]
 #ナゾC
 ・・・ふざけてるの？[p]
-#
+#ナゾA
 すみません・・・[p]
 [_tb_end_text]
 
@@ -689,7 +628,7 @@ DとEは大広間で待っていててくれ[p]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [cm  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 「2文字目と4文字目が『ん』に変わった」ってことですよね？[p]
 #ナゾB
 そうだろうな[p]
@@ -697,10 +636,12 @@ DとEは大広間で待っていててくれ[p]
 [_tb_end_text]
 
 [chara_hide_all  time="1000"  wait="true"  ]
+[tb_hide_message_window  ]
 [bg  time="1000"  method="crossfade"  storage="備品庫中.webp"  ]
 [wait  time="3000"  ]
 [chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="505"  height="357"  left="80"  top="108"  reflect="false"  ]
 [chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/犯人.webp"  width="505"  height="357"  left="675"  top="108"  reflect="false"  ]
+[tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
 中は食品とか生活用品とか雑多なものがいっぱい置いてあるな[p]
@@ -732,6 +673,10 @@ Cの方こそ、何か見つけてた感じだったが？[p]
 [chara_hide  name="ナゾC"  time="1000"  wait="true"  pos_mode="true"  ]
 [playse  volume="100"  time="1000"  buf="0"  storage="sei_ge_door_rock01.mp3"  ]
 [chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="505"  height="357"  left="675"  top="108"  reflect="false"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_c_p2 = true"]
+[_tb_end_tyrano_code]
+
 [tb_start_text mode=1 ]
 #ナゾC
 待たせたわね[p]
@@ -791,7 +736,7 @@ Cの方こそ、何か見つけてた感じだったが？[p]
 [stopbgm  time="3000"  fadeout="true"  ]
 [playbgm  volume="50"  time="2000"  loop="true"  storage="texture2.mp3"  fadein="true"  ]
 [chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="505"  height="357"  left="80"  top="108"  reflect="false"  ]
-[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/犯人.webp"  width="505"  height="357"  left="675"  top="108"  reflect="false"  ]
+[chara_show  name="ナゾC"  time="1000"  wait="true"  storage="chara/3/箱庭.webp"  width="505"  height="357"  left="675"  top="108"  reflect="false"  ]
 [tb_start_text mode=1 ]
 #ナゾB
 逃げやがった[p]
@@ -814,13 +759,13 @@ Cの方こそ、何か見つけてた感じだったが？[p]
 開いたな[p]
 姿は変わっていないみたいだ[p]
 他のやつはどうだ？[p]
-#
+#ナゾA
 ぼくは・・・[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="1000"  buf="0"  storage="doornob2.ogg"  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 開きません[p]
 #ナゾC
 私はこの枠もってるから[p]
@@ -829,7 +774,7 @@ Cの方こそ、何か見つけてた感じだったが？[p]
 [playse  volume="100"  time="1000"  buf="0"  storage="sei_ge_door_rock01.mp3"  ]
 [tb_start_text mode=1 ]
 #ナゾC
-当然開くわね[p]
+やっぱり開くわね[p]
 #ナゾB
 見た目は変わってないな[p]
 「明日」がそのまま「明日」になってるってことか[p]
@@ -914,6 +859,9 @@ Eちゃんよろしくっす[p]
 [image storage="default/混戦.webp" layer="1" page="fore" visible="true" x="300" y="180" width="284" height="200" time="1000" wait="false"]
 [image storage="default/箱庭.webp" layer="1" page="fore" visible="true" x="700" y="180" width="284" height="200" time="1000" wait="false"]
 [image storage="default/btn_think.webp" layer="1" page="fore" visible="true" x="56" y="400" width="164" height="71" time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="410" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="810" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="600" y="500"  time="1000" wait="true"]
 [_tb_end_tyrano_code]
 
 [clickable  storage="scene4.ks"  x="0"  y="0"  width="1280"  height="720"  target="*hiroma"  ]
@@ -925,7 +873,7 @@ Eちゃんよろしくっす[p]
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [cm  ]
-[tb_image_hide  time="1000"  ]
+[tb_image_hide  time="300"  ]
 [chara_show  name="ナゾB"  time="600"  wait="true"  storage="chara/2/混戦.webp"  width="533"  height="379"  left="373"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -941,7 +889,7 @@ Eちゃんよろしくっす[p]
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [cm  ]
-[tb_image_hide  time="1000"  ]
+[tb_image_hide  time="300"  ]
 [chara_show  name="ナゾC"  time="600"  wait="true"  storage="chara/3/箱庭.webp"  width="533"  height="379"  left="373"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -957,10 +905,10 @@ Eちゃんよろしくっす[p]
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [cm  ]
-[tb_image_hide  time="1000"  ]
+[tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 あの二人が探索を終えるのを待とう[p]
 [_tb_end_text]
 
@@ -976,7 +924,7 @@ Eちゃんよろしくっす[p]
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 大広間[p]
 そんなに特徴はなさそうだ[p]
 [_tb_end_text]
@@ -994,7 +942,7 @@ Eちゃんよろしくっす[p]
 [cm  ]
 [tb_image_hide  time="1000"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
-[chara_show  name="ナゾE"  time="1000"  wait="false"  storage="chara/5/家反対.webp"  width="284"  height="200"  top="180"  left="855"  ]
+[chara_show  name="ナゾE"  time="1000"  wait="false"  storage="chara/5/杖反対.webp"  width="284"  height="200"  top="180"  left="855"  ]
 [chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/バードつみき.webp"  width="284"  height="200"  left="477"  top="180"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -1073,12 +1021,19 @@ Eちゃん大丈夫？[p]
 
 [mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
 [tb_image_hide  time="1000"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_d_p2 = true"]
+[eval exp="f.unlock_nazo_e_p2 = true"]
+[eval exp="f.unlock_doc_1_p4 = true"]
+[eval exp="f.unlock_doc_1_p5 = true"]
+[_tb_end_tyrano_code]
+
 [wait  time="600"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="243"  height="172"  left="66"  top="207"  reflect="false"  ]
 [chara_show  name="ナゾC"  time="1000"  wait="false"  storage="chara/3/箱庭.webp"  width="243"  height="172"  top="207"  left="367"  reflect="false"  ]
 [chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/バードつみき.webp"  width="243"  height="172"  left="680"  top="207"  reflect="false"  ]
-[chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/家反対.webp"  width="243"  height="172"  left="997"  top="206"  reflect="false"  ]
+[chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/杖反対.webp"  width="243"  height="172"  left="997"  top="206"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
@@ -1094,7 +1049,11 @@ Eちゃん大丈夫？[p]
 [_tb_end_text]
 
 [playse  volume="50"  time="1000"  buf="0"  storage="sei_ge_door_rock01.mp3"  ]
-[chara_mod  name="ナゾE"  time="600"  cross="true"  storage="chara/5/家賛成.webp"  ]
+[chara_mod  name="ナゾE"  time="600"  cross="true"  storage="chara/5/杖賛成.webp"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_e_p3 = true"]
+[_tb_end_tyrano_code]
+
 [tb_start_text mode=1 ]
 #ナゾD
 よっしゃー飯っすー[p]

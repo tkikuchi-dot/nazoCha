@@ -1,13 +1,6 @@
 [_tb_system_call storage=system/_menu_data.ks]
 
 [tb_start_tyrano_code]
-; メニューの文章・画像パスのみ。座標やボタンは document.ks。
-; シナリオタブの「ティラノスクリプト」部品で編集する。
-; image は data/fgimage/ からの相対パス。空文字なら img の文字を出す。
-; 1=ナゾA, 2=ナゾB, 3=ナゾC, 4=ナゾD, 5=ナゾE
-; ページ数は可変。menuNazoPages に 2: { ... } 3: { ... } を足せばページが増える。
-; 開放フラグは f.unlock_nazo_a_p1, p2, p3 ... とページ番号に合わせる。
-
 [iscript]
 // 何もない時の表示
 window.makeNazoPlaceholder = function (title, pageNo) {
@@ -33,230 +26,205 @@ img: "画像：" + title + " " + pageNo + "ページ目（未設定）",
 image: "chara/2/混戦.webp"
 };
 };
+window.makeCluePlaceholder = function (title, pageNo) {
+return {
+title: title,
+text1: title + " " + pageNo + "ページ目（未設定）",
+text2: "",
+text3: "",
+text4: "",
+img: "画像：" + title + " " + pageNo + "ページ目（未設定）",
+image: "default/混戦.webp" // ※仮の画像パス
+};
+};
 
 window.menuNazoPages = {
 // ナゾA-------------------------------------
 1: {
-1: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "招待状が来たことでナゾの半分が黒塗りになってしまった",
-prefix: "探偵・",
-red: "櫂 利飛太",
-suffix: "に真相究明と犯人捜しを依頼した。",
-img: "画像：ナゾA",
-image: "chara/1/音階.webp"
-},
-2: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "17：50ごろ、館の大広間に入ったことで",
-text3: "「ドレミの歌」→「数字」へと変化した。",
-img: "画像：ナゾA",
-image: "chara/1/数字.webp"
-},
-3: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "19:00時ごろ、物置に入ったことで黒塗りの位置が左右反転してしまった",
-img: "画像：ナゾA",
-image: "chara/1/反転.webp"
-},
+1: { title: "ナゾA", text1: "このゲームの主人公であるごく普通の公演小謎？", text2: "招待状が来たことでナゾの半分が黒塗りになってしまった", img: "画像：ナゾA", image: "chara/1/音階.webp" },
+2: { title: "ナゾA", text1: "このゲームの主人公であるごく普通の公演小謎？", text2: "17：50ごろ、館の大広間に入ったことで", text3: "「ドレミの歌」→「数字」へと変化した。", img: "画像：ナゾA", image: "chara/1/数字.webp" },
+3: { title: "ナゾA", text1: "このゲームの主人公であるごく普通の公演小謎？", text2: "7時ごろ、物置に入ったことで黒塗りの位置が左右反転してしまった", img: "画像：ナゾA", image: "chara/1/反転.webp" }
 },
 // ナゾB-------------------------------------
 2: {
-1: {
-title: "ナゾB",
-text1: "強気な性格のナゾ",
-text2: "楽しいことが好きだが、退屈は嫌い",
-img: "画像：ナゾB（未設定）",
-image: "chara/2/混戦.webp"
-},
-2: {
-title: "ナゾB",
-text1: "強気な性格のナゾ",
-text2: "実はすべてを知るナゾであった",
-text3: "機械制御室の法則を利用してナゾＣになりすまし、犯行時刻を攪乱していた",
-text4: "だがどうやら本当の犯行時刻にはアリバイがあるため、犯人ではないらしい…？",
-img: "画像：ナゾB（未設定）",
-image: "chara/2/nazob.webp"
-},
+1: { title: "ナゾB", text1: "強気な性格のナゾ", text2: "楽しいことが好きだが、退屈は嫌い", text3: "", text4: "", img: "画像：ナゾB", image: "chara/2/混戦.webp" },
+2: { title: "ナゾB", text1: "強気な性格のナゾ", text2: "実はすべてを知るナゾであった", text3: "機械制御室の法則を利用してナゾＣになりすまし、犯行時刻を攪乱していた", text4: "だがどうやら本当の犯行時刻にはアリバイがあるため、犯人ではないらしい…？", img: "画像：ナゾB", image: "chara/2/nazob.webp" }
 },
 // ナゾC-------------------------------------
 3: {
-1: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "招待状が来たことでナゾの半分が黒塗りになってしまった",
-prefix: "探偵・",
-red: "櫂 利飛太",
-suffix: "に真相究明と犯人捜しを依頼した。",
-img: "画像：ナゾA",
-image: "chara/1/音階.webp"
+1: { title: "ナゾC", text1: "ミステリアスでどこか気品のあるナゾ", text2: "そのほとんどが黒塗りになっているところもミステリアスさを際立たせている", text3: "", text4: "", img: "画像：ナゾC", image: "chara/3/箱庭.webp" },
+2: { title: "ナゾC", text1: "ミステリアスでどこか気品のあるナゾ", text2: "19時頃の探索で備蓄庫に入ったことで", text3: "「箱庭」→「犯人」となり、この姿になった", text4: "しかし「犯人」と言う言葉が物騒で嫌だからという理由で「箱庭」に戻している", img: "画像：ナゾC", image: "chara/3/犯人.webp" },
+3: { title: "ナゾC", text1: "ミステリアスでどこか気品のあるナゾ", text2: "何者かによって喉を切られて殺害された", text3: "", text4: "", img: "画像：ナゾC", image: "chara/3/殺害後.webp" },
+4: { title: "ナゾC", text1: "ミステリアスでどこか気品のあるナゾ", text2: "血を落としたことで姿があらわになった", text3: "茶々丸いわく「ナゾCは自分自身の答えで犯人が誰かを伝えようとしていた」", text4: "", img: "画像：ナゾC", image: "chara/3/洗浄後.webp" }
 },
-2: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "17：50ごろ、館の大広間に入ったことで",
-text3: "「ドレミの歌」→「数字」へと変化した。",
-img: "画像：ナゾA",
-image: "chara/1/数字.webp"
-},
-3: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "19:00時ごろ、物置に入ったことで黒塗りの位置が左右反転してしまった",
-img: "画像：ナゾA",
-image: "chara/1/反転.webp"
-},
+// ナゾD-------------------------------------
 4: {
-title: "ナゾA",
-text1: "このゲームの主人公であるごく普通の公演小謎？",
-text2: "19:00時ごろ、物置に入ったことで黒塗りの位置が左右反転してしまった",
-img: "画像：ナゾA",
-image: "chara/1/反転.webp"
+1: { title: "ナゾD", text1: "少しチャラめだが後輩気質なナゾ", text2: "", text3: "", text4: "", img: "画像：ナゾD", image: "chara/4/ハートつみき.webp" },
+2: { title: "ナゾD", text1: "少しチャラめだが後輩気質なナゾ", text2: "19時半ごろ、大浴場に入ったことで", text3: "「ハート」→「バード」に変化した", text4: "", img: "画像：ナゾD", image: "chara/4/バードつみき.webp" },
+3: { title: "ナゾD", text1: "少しチャラめだが後輩気質なナゾ", text2: "ナゾＡが遊戯室を通って自室に戻って以降、いくつかの部屋を変遷して", text3: "この姿になっている", text4: "", img: "画像：ナゾD", image: "chara/4/ハトタイヨウ.webp" },
+4: { title: "ナゾD", text1: "少しチャラめだが後輩気質なナゾ", text2: "2時前に休憩室に入ったことで", text3: "「ハート」→「はと」、「つみき」→「つき」へ変化した", text4: "", img: "画像：ナゾD", image: "chara/4/ハト月.webp" }
 },
-},
-4: {
-1: {
-title: "ナゾD",
-text1: "ナゾDの説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-text3: "",
-img: "画像：ナゾD（未設定）",
-image: "chara/2/混戦.webp"
-},
-2: window.makeNazoPlaceholder("ナゾD", 2),
-3: window.makeNazoPlaceholder("ナゾD", 3)
-},
+// ナゾE-------------------------------------
 5: {
-1: {
-title: "ナゾE",
-text1: "ナゾEの説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-text3: "",
-img: "画像：ナゾE（未設定）",
-image: "chara/2/混戦.webp"
-},
-2: window.makeNazoPlaceholder("ナゾE", 2),
-3: window.makeNazoPlaceholder("ナゾE", 3)
+1: { title: "ナゾE", text1: "気弱で内気な性格のナゾ", text2: "黒塗りとマスクの影響で見えている部分が少ない", text3: "", text4: "", img: "画像：ナゾE", image: "chara/5/家賛成.webp" },
+2: { title: "ナゾE", text1: "気弱で内気な性格のナゾ", text2: "19時半ごろの探索で食堂と守衛室を経てこの姿になった", text3: "", text4: "", img: "画像：ナゾE", image: "chara/5/杖反対.webp" },
+3: { title: "ナゾE", text1: "気弱で内気な性格のナゾ", text2: "20時頃、全員で食堂に入った際に「反？」→「賛？」へと変化した", text3: "", text4: "", img: "画像：ナゾE", image: "chara/5/杖賛成.webp" }
 }
 };
 
 window.menuDocPages = {
+// -------------------------------------
+// 資料1：部屋の法則（①, ⑦, ⑧, ⑨, ⑩, ⑱, ⑲を統合）
+// -------------------------------------
 1: {
-1: {
-title: "資料1",
-text1: "資料1の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料1（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "法則：大広間", text1: "館の入口を開けた瞬間にナゾAの頭の中に流れ込んできた法則", text2: "", text3: "", img: "画像：法則：大広間", image: "default/法則：大広間.webp" }, // ①
+2: { title: "法則：大広間・食堂", text1: "大広間と食堂の法則が書かれたもの", text2: "大広間は時間帯ごとの変化で、食堂は入るたびに「変化する」「元に戻る」を繰り返す", text3: "", img: "画像：rule_room1", image: "default/rule_room1.webp" }, // ⑦
+3: { title: "法則：厨房", text1: "厨房の扉を開けた瞬間にナゾAの頭の中に流れ込んできた法則", text2: "", text3: "", img: "画像：法則：厨房", image: "default/法則：厨房.webp" }, // ⑧
+4: { title: "部屋の法則（時間変化）", text1: "全員の探索後に判明した部屋の法則", text2: "時間帯ごとに変化する4つの部屋の法則についてまとまっている", text3: "", img: "画像：room_rule1", image: "default/room_rule1.webp" }, // ⑨
+5: { title: "部屋の法則（入退室変化）", text1: "全員の探索後に判明した部屋の法則", text2: "入るたびに「変化する」「元に戻る」を繰り返す4つの部屋の法則についてまとまっている", text3: "「休憩室」の法則はまだ判明していない", img: "画像：room_rule2", image: "default/room_rule2.webp" }, // ⑩
+6: { title: "部屋の法則（入退室変化）", text1: "全員の探索後に判明した部屋の法則", text2: "入るたびに「変化する」「元に戻る」を繰り返す4つの部屋の法則についてまとまっている", text3: "", img: "画像：room_rule3", image: "default/room_rule2.webp" }, // ⑩
+7: { title: "物置の法則", text1: "物置の法則", text2: "入るための条件を２つとも満たしていないと入ることができない", text3: "", img: "画像：物置法則", image: "default/物置法則.webp" }, // ⑱
+8: { title: "機械制御室の法則", text1: "機械制御室の法則", text2: "入るための条件を２つとも満たしていないと入ることができない", text3: "", img: "画像：機械制御室法則", image: "default/機械制御室法則.webp" } // ⑲
 },
-2: window.makeDocPlaceholder("資料1", 2),
-3: window.makeDocPlaceholder("資料1", 3)
-},
+// -------------------------------------
+// 資料2：茶々丸（②）
+// -------------------------------------
 2: {
-1: {
-title: "資料2",
-text1: "資料2の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料2（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "茶々丸", text1: "この館の管理人を名乗る謎のネコ", text2: "この館で起こることはなんでも知っているらしい", text3: "ウソをつけないので、都合が悪くなると逃げる癖がある", img: "画像：茶々丸", image: "default/茶々丸.webp" }
 },
-2: window.makeDocPlaceholder("資料2", 2),
-3: window.makeDocPlaceholder("資料2", 3)
-},
+// -------------------------------------
+// 資料3：基本ルール（③, ④, ⑤, ⑥）
+// -------------------------------------
 3: {
-1: {
-title: "資料3",
-text1: "資料3の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料3（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "館のルール 1", text1: "館の部屋の法則について書かれたもの", text2: "", text3: "", img: "画像：rule1", image: "default/rule1.webp" },
+2: { title: "館のルール 2", text1: "館の部屋の法則について書かれたもの", text2: "", text3: "", img: "画像：rule2", image: "default/rule2.webp" },
+3: { title: "館のルール 3", text1: "館の部屋の法則について書かれたもの", text2: "", text3: "", img: "画像：rule3", image: "default/rule3.webp" },
+4: { title: "館のルール 4", text1: "館の部屋の法則について書かれたもの", text2: "", text3: "", img: "画像：rule4", image: "default/rule4.webp" }
 },
-2: window.makeDocPlaceholder("資料3", 2),
-3: window.makeDocPlaceholder("資料3", 3)
-},
+// -------------------------------------
+// 資料4：事件File（⑪, ⑫）
+// -------------------------------------
 4: {
-1: {
-title: "資料4",
-text1: "資料4の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料4（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "事件File 1", text1: "事件についての詳細を茶々丸がまとめたもの", text2: "", text3: "", img: "画像：事件File1", image: "default/事件File1.webp" },
+2: { title: "事件File 2", text1: "事件についての詳細を茶々丸がまとめたもの", text2: "", text3: "", img: "画像：事件File2", image: "default/事件File2.webp" },
 },
-2: window.makeDocPlaceholder("資料4", 2),
-3: window.makeDocPlaceholder("資料4", 3)
-},
+// -------------------------------------
+// 資料5：凶器・遺留品（⑬, ⑭）
+// -------------------------------------
 5: {
-1: {
-title: "資料5",
-text1: "資料5の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料5（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "レインコート", text1: "犯人が犯行時に着用したと思われるもの", text2: "返り血を防ぐために使用されたと思われる", text3: "", img: "画像：raincoat", image: "default/raincoat.webp" },
+2: { title: "血塗られた包丁", text1: "ナゾC殺害に使用されたと思われる包丁", text2: "この館の厨房に同じものがある", text3: "", img: "画像：knife", image: "default/knife.webp" }
 },
-2: window.makeDocPlaceholder("資料5", 2),
-3: window.makeDocPlaceholder("資料5", 3)
-},
+// -------------------------------------
+// 資料6：ナゾCのメモ（⑮）
+// -------------------------------------
 6: {
-1: {
-title: "資料6",
-text1: "資料6の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料6（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "ナゾCのメモ", text1: "ナゾCが残していたメモ", text2: "昨夜聞いた全員の答えが書かれているが、血によって見えなくなっている部分がある", text3: "ナゾAの答えは「らいふ」のようだ", img: "画像：メモ", image: "default/メモ.webp" }
 },
-2: window.makeDocPlaceholder("資料6", 2),
-3: window.makeDocPlaceholder("資料6", 3)
-},
+// -------------------------------------
+// 資料7：洗剤反応（⑯, ⑰）
+// -------------------------------------
 7: {
-1: {
-title: "資料7",
-text1: "資料7の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料7（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "フィルター反応", text1: "食堂の空気清浄機のフィルター", text2: "アルカリ性の洗剤をかけたことで紫色に変色した", text3: "空気清浄機に睡眠薬が混入していたと思われる", img: "画像：filter_purple", image: "default/filter_purple.webp" },
+2: { title: "マスクの反応", text1: "昨夜ナゾEがつけていたとみられるマスク", text2: "アルカリ性の洗剤をかけたことで裏面のフィルターが紫色に変色した", text3: "", img: "画像：mask_purple", image: "default/mask_purple.webp" }
 },
-2: window.makeDocPlaceholder("資料7", 2),
-3: window.makeDocPlaceholder("資料7", 3)
-},
+// -------------------------------------
+// 資料8：部屋の出入り回数表（⑳）
+// -------------------------------------
 8: {
-1: {
-title: "資料8",
-text1: "資料8の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料8（未設定）",
-image: "chara/2/混戦.webp"
+1: { title: "部屋の出入り回数表", text1: "ナゾCが死亡してから茶々丸が時間を止めるまでの", text2: "部屋の出入りの回数を表したもの", text3: "", img: "画像：count", image: "default/count.webp" }
 },
-2: window.makeDocPlaceholder("資料8", 2),
-3: window.makeDocPlaceholder("資料8", 3)
-},
+// -------------------------------------
+// 予備枠（ 9, 10）
+// -------------------------------------
 9: {
-1: {
-title: "資料9",
-text1: "資料9の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料9（未設定）",
-image: "chara/2/混戦.webp"
-},
-2: window.makeDocPlaceholder("資料9", 2),
-3: window.makeDocPlaceholder("資料9", 3)
+1: window.makeDocPlaceholder("資料9", 1),
+2: window.makeDocPlaceholder("資料9", 2)
 },
 10: {
+1: window.makeDocPlaceholder("資料10", 1),
+2: window.makeDocPlaceholder("資料10", 2)
+}
+};
+window.menuCluePages = {
+// -------------------------------------
+// 手がかり1：犯人
+// -------------------------------------
 1: {
-title: "資料10",
-text1: "資料10の説明テキスト（仮）",
-text2: "ここに詳細を書きます。",
-img: "画像：資料10（未設定）",
-image: "chara/2/混戦.webp"
+1: {
+title: "犯人",
+text1: "何者かに殺害されたとみられるナゾC",
+text2: "血の影響でほとんど見えなくなっているが、右下に犯人と書かれている",
+text3: "どうやら備蓄庫の法則を使って「箱庭」から「犯人」に変化させたようだ",
+text4: "",
+img: "画像：犯人",
+image: "default/殺害後.webp"
+}
 },
-2: window.makeDocPlaceholder("資料10", 2),
-3: window.makeDocPlaceholder("資料10", 3)
+// -------------------------------------
+// 手がかり2：血痕
+// -------------------------------------
+2: {
+1: {
+title: "血痕",
+text1: "廊下に残るナゾCの血の跡",
+text2: "辿るとナゾCの部屋からナゾCが倒れていた備蓄庫の前まで続いていることが分かる",
+text3: "",
+text4: "",
+img: "画像：血痕",
+image: "default/kekkon.webp"
+}
+},
+// -------------------------------------
+// 手がかり3：ダイイングメッセージ
+// -------------------------------------
+3: {
+1: {
+title: "ダイイングメッセージ",
+text1: "ナゾC自身の意思によって遺されたダイイングメッセージ",
+text2: "「犯人が誰かを伝えている」ということを表すために右下を「犯人」に変え",
+text3: "その答えの「らいふ」によって誰が犯人であるかを示している",
+text4: "",
+img: "画像：ダイイングメッセージ",
+image: "default/洗浄後.webp"
+}
+},
+// -------------------------------------
+// 手がかり4：映像
+// -------------------------------------
+4: {
+1: {
+title: "映像",
+text1: "守衛室にあるモニターに映された映像。大浴場の入口が映されていて",
+text2: "①19時半ごろに探索でやってきたナゾD、ナゾE",
+text3: "②0時半ごろに汗を流すためやってきたナゾB、Dと１時半ごろに帰っていく姿",
+text4: "③茶々丸が時間を止めた後、ナゾCの血を落とすために出入りする様子",
+img: "画像：映像",
+image: "default/monitor.webp"
+}
+},
+// -------------------------------------
+// 予備枠（5〜10）
+// -------------------------------------
+5: {
+1: window.makeCluePlaceholder("手がかり5", 1)
+},
+6: {
+1: window.makeCluePlaceholder("手がかり6", 1)
+},
+7: {
+1: window.makeCluePlaceholder("手がかり7", 1)
+},
+8: {
+1: window.makeCluePlaceholder("手がかり8", 1)
+},
+9: {
+1: window.makeCluePlaceholder("手がかり9", 1)
+},
+10: {
+1: window.makeCluePlaceholder("手がかり10", 1)
 }
 };
 [endscript]
-[return]
-
 [_tb_end_tyrano_code]
 

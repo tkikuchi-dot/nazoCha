@@ -1,6 +1,6 @@
 [_tb_system_call storage=system/_scene7.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *todaiyokujou
 
 [mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
@@ -20,6 +20,10 @@
 
 [chara_hide  name="茶々丸"  time="1000"  wait="true"  pos_mode="true"  ]
 [tb_image_show  time="1000"  storage="default/ハト月.webp"  width="505"  height="357"  x="375"  y="108"  name="img_9"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_d_p4 = true"]
+[_tb_end_tyrano_code]
+
 [tb_start_text mode=1 ]
 #茶々丸
 [font color="red" bold="true"]「たいよう」[resetfont]が[font color="red" bold="true"]「つき」[resetfont]に変わってるニャ[p]
@@ -63,7 +67,7 @@
 [tb_start_text mode=1 ]
 #ナゾD
 これで血は落ちるんすかね[p]
-#
+#ナゾA
 分かんないけどやるしかないですね[p]
 #茶々丸
 ちゃちゃーん！[p]
@@ -80,7 +84,7 @@
 #茶々丸
 いいお知らせを持ってきたのニャ[p]
 ナゾCの部屋のカギを開けたのニャ[p]
-ここはもうカギが閉まらニャいようにしたから、lこれ以降自由に出入りできるのニャ[p]
+ここはもうカギが閉まらニャいようにしたから、これ以降自由に出入りできるのニャ[p]
 #ナゾD
 まじっすか[p]
 じゃあ僕は血を落としておくので、その間にAさんはCさんの部屋を調べてもらっていいっすか？[p]
@@ -100,12 +104,42 @@
 [chara_hide_all  time="1000"  wait="true"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ここがCさんの部屋か[p]
-犯人を突き止めるために探索を開始しよう[p]
+犯人を突き止めるために捜査を開始しよう[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
+[wait  time="300"  ]
+[tb_start_tyrano_code]
+; =====================================
+; ▼ 捜査開始 カットイン演出
+; =====================================
+[layopt layer="1" visible="true"]
+
+; folder="image" を削除し、デフォルトの fgimage フォルダを読ませます
+[image layer="1" name="obi" storage="default/obi.webp" x="1280" y="300"]
+[image layer="1" name="text" storage="default/text_sousakaisi.webp" x="1400" y="340"]
+
+; スライドイン（左へ動く）
+[anim name="obi" left="0" time="300"]
+[anim name="text" left="450" time="400"]
+[wa]
+
+; 1秒間ストップして見せる
+[wait time="1500"]
+
+; スライドアウト（さらに左へ消える）
+[anim name="obi" left="-1280" time="300"]
+[anim name="text" left="-1280" time="300"]
+[wa]
+
+; アニメーションが終わった画像を綺麗に消去
+[free name="obi" layer="1"]
+[free name="text" layer="1"]
+; =====================================
+[_tb_end_tyrano_code]
+
 *roomC
 
 [cm  ]
@@ -202,7 +236,10 @@
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[tb_alert_dialog  label_ok="OK"  text="「メモ」を入手しました"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_6 = true; f.unlock_doc_6_p1 = true"]
+[_tb_end_tyrano_code]
+
 [tb_eval  exp="f.roomC1_4=1"  name="roomC1_4"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [jump  storage="scene7.ks"  target="*roomC"  ]
 *roomC_think
@@ -224,6 +261,11 @@
 *after_roomC
 
 [cm  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_5 = true; f.unlock_doc_5_p1 = true"]
+[eval exp="f.unlock_doc_5_p1 = true"]
+[_tb_end_tyrano_code]
+
 [chara_show  name="茶々丸"  time="1000"  wait="true"  storage="chara/6/茶々丸.webp"  width="579"  height="390"  left="346"  top="99"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -249,8 +291,6 @@
 [chara_show  name="茶々丸"  time="600"  wait="true"  storage="chara/6/茶々丸.webp"  width="579"  height="390"  left="346"  top="99"  reflect="false"  ]
 [clickable  storage="scene7.ks"  x="346"  y="99"  width="579"  height="390"  target="*talk_brown"  _clickable_img=""  ]
 [tb_start_tyrano_code]
-さて、ここからどうしようか
-
 ; MAPボタン（例）
 [button graphic="btn_map.webp" target="*open_map" x="20" y="500"]
 [s]

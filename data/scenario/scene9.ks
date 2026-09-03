@@ -1,10 +1,10 @@
 [_tb_system_call storage=system/_scene9.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *start
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ・・・！[p]
 まさか・・・[p]
 いや、だがこれならEさんも眠くなるはず[p]
@@ -38,7 +38,7 @@ Eさんは今・・・守衛室にいるのか[p]
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 守衛室[p]
 この館に不釣り合いな機器が並んでいる[p]
 [_tb_end_text]
@@ -53,7 +53,7 @@ Eさんは今・・・守衛室にいるのか[p]
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 加湿器の水に睡眠薬が入っていたなら[r]同じ食堂にいたEさんも眠くなっているはず[p]
 Eさんに話を聞こう[p]
 [_tb_end_text]
@@ -68,7 +68,7 @@ Eさんに話を聞こう[p]
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 モニターには何も映っていない[p]
 [_tb_end_text]
 
@@ -82,7 +82,7 @@ Eさんに話を聞こう[p]
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 このモニターだけ映像が映っている[p]
 大浴場の前の扉のようだ[p]
 巻き戻してみると[p]
@@ -90,6 +90,10 @@ Eさんに話を聞こう[p]
 1時半ごろに出ていく様子が映し出されている[p]
 どうやら茶々丸が時間を止めるまで、それ以外の出入りはなさそうだ[p]
 [_tb_end_text]
+
+[tb_start_tyrano_code]
+[eval exp="f.unlock_clue_4 = true; f.unlock_clue_4_p1 = true"]
+[_tb_end_tyrano_code]
 
 [tb_hide_message_window  ]
 [jump  storage="scene9.ks"  target="*syuei"  ]
@@ -101,18 +105,18 @@ Eさんに話を聞こう[p]
 [chara_show  name="ナゾE"  time="600"  wait="true"  storage="chara/5/家賛成.webp"  width="507"  height="360"  left="399"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ちょっと聞きたいことがあるんですが・・・[p]
 #ナゾE
 な、何でしょうか？[p]
-#
+#ナゾA
 Eさんって昨日Dさんの部屋を訪ねたみたいですが、それまでは何をされてたんですか？[p]
 #ナゾE
 あ、その、私今日何が起こるのかすごい不安で・・・[p]
 Aさんと別れたあとも全然眠れなくて・・・[p]
 そ、それで隣の部屋にDさんが帰ってきた音がしたから、部屋をノックしました[p]
 Dさんと話したあとはちょっと落ち着いて、すぐに眠れたと思います[p]
-#
+#ナゾA
 そうですか・・・[p]
 （やはり。あの時食堂には睡眠薬の成分が部屋中に蔓延していたはずだ。）[p]
 （それなのに眠くならないなんておかしい）[p]
@@ -144,7 +148,7 @@ Dさんと話したあとはちょっと落ち着いて、すぐに眠れたと�
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 この部屋に何か決定的な証拠が残されているかもしれない[p]
 [_tb_end_text]
 
@@ -158,7 +162,7 @@ Dさんと話したあとはちょっと落ち着いて、すぐに眠れたと�
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 Eさんが眠くならなかった秘密がこの部屋に隠されているかもしれない[p]
 [_tb_end_text]
 
@@ -170,29 +174,29 @@ Eさんが眠くならなかった秘密がこの部屋に隠されているか�
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [chara_hide_all  time="300"  wait="false"  ]
 [tb_image_hide  time="300"  ]
-[tb_image_show  time="1000"  storage="default/btn_trushbox.webp"  width="175"  height="272"  x="551"  y="208"  _clickable_img=""  name="img_93"  ]
+[tb_image_show  time="1000"  storage="default/btn_trushbox.webp"  width="175"  height="272"  x="551"  y="208"  _clickable_img=""  name="img_94"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ゴミ箱だ[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
 [tb_image_hide  time="300"  ]
-[tb_image_show  time="1000"  storage="default/trushbox.webp"  width="371"  height="371"  x="441"  y="116"  _clickable_img=""  name="img_98"  ]
+[tb_image_show  time="1000"  storage="default/trushbox.webp"  width="371"  height="371"  x="441"  y="116"  _clickable_img=""  name="img_99"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 中にはマスクが入っている[p]
 昨日着けていたものだろうか[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
 [tb_image_hide  time="300"  ]
-[tb_image_show  time="1000"  storage="default/mask.webp"  width="470"  height="254"  x="402"  y="172"  _clickable_img=""  name="img_103"  ]
+[tb_image_show  time="1000"  storage="default/mask.webp"  width="470"  height="254"  x="402"  y="172"  _clickable_img=""  name="img_104"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 マスクの裏には何やらフィルターのようなものが付いている[p]
 マスクに洗剤を・・・[p]
 [_tb_end_text]
@@ -205,11 +209,15 @@ Eさんが眠くならなかった秘密がこの部屋に隠されているか�
 [cm  ]
 [tb_hide_message_window  ]
 [tb_image_hide  time="300"  ]
-[tb_image_show  time="1000"  storage="default/mask_purple.webp"  width="470"  height="254"  x="402"  y="172"  _clickable_img=""  name="img_113"  ]
+[tb_image_show  time="1000"  storage="default/mask_purple.webp"  width="470"  height="254"  x="402"  y="172"  _clickable_img=""  name="img_114"  ]
 [wait  time="1500"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_7_p2 = true"]
+[_tb_end_tyrano_code]
+
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 マスクが紫色に変色した[p]
 ・・・！[p]
 まさか・・・！[p]
@@ -235,12 +243,12 @@ Eさんが眠くならなかった秘密がこの部屋に隠されているか�
 #茶々丸
 みんニャ集まったニャ～[p]
 じゃあアリバイに関して主張できるナゾはいるかニャ～[p]
-#
+#ナゾA
 あの、いいですか？[p]
 #茶々丸
-容疑者第一候補のナゾAくんだニャ[p]
+犯人第一候補のナゾAくんだニャ[p]
 じゃあ主張するニャ[p]
-#
+#ナゾA
 えと、ぼくは睡眠薬で眠らされた可能性があります[p]
 #ナゾB
 はあ？[p]
@@ -248,7 +256,7 @@ Eさんが眠くならなかった秘密がこの部屋に隠されているか�
 睡眠薬っすか？[p]
 #ナゾE
 ・・・⁉[p]
-#
+#ナゾA
 ナゾBさんとナゾDさんが遊戯室に行った後、ナゾEさんが食堂の加湿器をつけました[p]
 その加湿器の水に睡眠薬が仕込まれていたんです[p]
 #ナゾD
@@ -257,31 +265,45 @@ Eさんが眠くならなかった秘密がこの部屋に隠されているか�
 だがその話がほんとならEもお前と同様に強烈な眠気に襲われるんじゃないか？[p]
 #ナゾE
 わ、わわ、わたし、すごく眠くなってましたっ[p]
-#
+#ナゾA
 いえ、Eさんには睡眠薬は効かなかったんです[p]
 #ナゾD
 どういう意味っすか？[p]
-#
+#ナゾA
 これが何か分かりますか？[p]
+[_tb_end_text]
+
+[tb_image_show  time="500"  storage="default/mask_normal.webp"  width="485"  height="189"  x="391"  y="113"  _clickable_img=""  name="img_129"  ]
+[tb_start_text mode=1 ]
 #ナゾE
 そ、それは、き、昨日つけてたマスクですっ[p]
 #ナゾD
 うわ、Aさん使用済みマスク回収するとかちょっとキモイっすね[p]
-#
+#ナゾA
 ・・・・・[p]
 見てほしいのはこちらの面です[p]
+[_tb_end_text]
+
+[tb_image_hide  time="500"  ]
+[wait  time="200"  ]
+[tb_image_show  time="500"  storage="default/mask_purple.webp"  width="421"  height="227"  x="425"  y="71"  _clickable_img=""  ]
+[tb_start_text mode=1 ]
 #ナゾE
 ・・・！[p]
 #ナゾB
 ⁉[p]
 #ナゾD
 え、むらさき？[p]
-#
+#ナゾA
 これが今回使用されたと思われる睡眠薬です[p]
 こちらは備蓄庫にありました[p]
 この薬品は「アルカリ性のものと反応して紫色に変色」します[p]
 つまり、このマスクの内側のフィルターが紫色に変色しているのは[p]
 そのフィルターが「睡眠薬の成分」を吸い込む前に回収してたからです[p]
+[_tb_end_text]
+
+[tb_image_hide  time="500"  ]
+[tb_start_text mode=1 ]
 #ナゾD
 え、じゃあEさんが・・・[p]
 #ナゾE
@@ -293,13 +315,13 @@ Eさんが眠くならなかった秘密がこの部屋に隠されているか�
 #ナゾE
 あ、あの、違いますっ[p]
 私もなぜか眠くなってたんです[p]
-#
+#ナゾA
 いえ、あなたは眠れないという理由でナゾDさんの部屋を訪ねていました[p]
 #ナゾE
 あ、あの、そのっ[p]
 た、確かに睡眠薬は仕込みました[p]
 で、ですが、それは命令されたからで・・・[p]
-#
+#ナゾA
 それは誰にですか？[p]
 #ナゾE
 そ、それは、言えません・・・[p]
@@ -318,7 +340,7 @@ Dさんが証明してくれています！[p]
 だが実際、Aは眠らされていた[p]
 そして現状一番怪しいやつにアリバイがあるってなると[p]
 捜査は振出しになったんじゃないか？[p]
-#
+#ナゾA
 ・・・・・[p]
 #ナゾD
 まあ、そうかもっすね[p]
@@ -439,7 +461,7 @@ Dさんが証明してくれています！[p]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 機械制御室[p]
 名前の通り色々な機械を制御していそうな部屋だ[p]
 [_tb_end_text]
@@ -454,7 +476,7 @@ Dさんが証明してくれています！[p]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ここに来ると捜査が進展する理由・・・[p]
 とにかく色々調べてみよう[p]
 [_tb_end_text]
@@ -470,13 +492,13 @@ Dさんが証明してくれています！[p]
 [tb_image_show  time="1000"  storage="default/電源.webp"  width="331"  height="374"  x="464"  y="124"  _clickable_img=""  name="img_200"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ドアディスプレイ用と書かれている[p]
 #ナゾD
 これって茶々丸が言ってたやつっすかね[p]
 確かにカギを開けた回数が分かれば捜査が進みそうっすね[p]
-#
-プラスドライバーで外せそうだ[p]
+#ナゾA
+プラスドライバーで外せそうです[p]
 外してみますね[p]
 [_tb_end_text]
 
@@ -487,11 +509,11 @@ Dさんが証明してくれています！[p]
 [tb_start_text mode=1 ]
 #ナゾD
 開きました・・・ってなんすかこれ[p]
-#
+#ナゾA
 配線が切断されてますね[p]
 #ナゾD
 これじゃディスプレイの電源を入れるのは不可能っすね[p]
-#
+#ナゾA
 （一時的にでも金属で繋いで電源を復活させられないだろうか）[p]
 [_tb_end_text]
 
@@ -534,7 +556,7 @@ Dさんが証明してくれています！[p]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 機械制御室[p]
 名前の通り色々な機械を制御していそうな部屋だ[p]
 [_tb_end_text]
@@ -549,7 +571,7 @@ Dさんが証明してくれています！[p]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 金属製品でつなげれば電源が復活するかもしれない[p]
 [_tb_end_text]
 
@@ -564,7 +586,7 @@ Dさんが証明してくれています！[p]
 [tb_image_show  time="1000"  storage="default/電源2.webp"  width="331"  height="374"  x="464"  y="124"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 配線が切断されている[p]
 金属製品でつなげれば電気が通るかもしれない[p]
 [_tb_end_text]

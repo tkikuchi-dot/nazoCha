@@ -2,7 +2,7 @@
 ;ナゾA
 [chara_new  name="ナゾA"  jname="ナゾA"  storage="chara/1/shigima_harue.png"  ]
 ;ナゾB
-[chara_new  name="ナゾB"  jname="ナゾB"  storage="chara/2/混戦.webp"  ]
+[chara_new  name="ナゾB"  jname="ナゾB"  storage="chara/2/nazob.webp"  ]
 ;ナゾC
 [chara_new  name="ナゾC"  jname="ナゾC"  storage="chara/3/殺害後.webp"  ]
 ;ナゾD
@@ -50,4 +50,5 @@ f['roomC1_3']=0;
 f['roomC1_4']=0; 
 f['roomC1_5']=0; 
 f['sousa1_8']=0; 
+f['tana']=0; 
 [endscript] 

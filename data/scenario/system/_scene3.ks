@@ -9,4 +9,7 @@
 [preload  storage="./data/fgimage/default/rule3.webp"  ]
 [preload  storage="./data/fgimage/default/rule4.webp"  ]
 [preload  storage="./data/fgimage/default/rule_room1.webp"  ]
+[preload  storage="./data/fgimage/default/tutorial1webp.webp"  ]
+[preload  storage="./data/fgimage/default/tutorial2webp.webp"  ]
+[preload  storage="./data/fgimage/default/tutorial3webp.webp"  ]
 [return]

@@ -15,6 +15,7 @@
 [clickable  storage="kikaiseigyositu.ks"  x="0"  y="0"  width="1280"  height="720"  target="*round"  ]
 [tb_start_tyrano_code]
 [button graphic="btn_think.webp" target="*think3" x="20" y="400"]
+[button graphic="btn_item.webp" target="*open_item2" x="20" y="480"]
 [button graphic="btn_map.webp" target="*open_map3" x="20" y="560"]
 [_tb_end_tyrano_code]
 
@@ -62,10 +63,10 @@
 
 ; ▼ すでにネックレスで繋いでいる場合
 [if exp="f.wire_fixed == 1"]
-    #
-    ネックレスを使って配線を繋いである。
-    無事に電気が通っているようだ。[p]
-    @jump target="*cancel_wire"
+#
+ネックレスを使って配線を繋いである。
+無事に電気が通っているようだ。[p]
+@jump target="*cancel_wire"
 [endif]
 
 ;画像表示
@@ -79,15 +80,15 @@
 
 ; ▼ ネックレスを持っている場合の選択肢
 [if exp="f.item_necklace == 1"]
-    ネックレスで配線をつなげますか？[p]
-    
-    [link target="*do_connect_wire"] ➤つなげる [endlink][r]
-    [link target="*cancel_wire"] ➤つなげない [endlink]
-    [s]
+ネックレスで配線をつなげますか？[p]
+
+[link target="*do_connect_wire"] ➤つなげる [endlink][r]
+[link target="*cancel_wire"] ➤つなげない [endlink]
+[s]
 
 ; ▼ 持っていない場合はそのまま戻る
 [else]
-    @jump target="*cancel_wire"
+@jump target="*cancel_wire"
 [endif]
 
 

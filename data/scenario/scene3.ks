@@ -1,8 +1,8 @@
 [_tb_system_call storage=system/_scene3.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 [bg  time="1000"  method="crossfade"  storage="館外観.webp"  ]
-[tb_image_show  time="1000"  storage="default/time_17.5.webp"  width="1280"  height="720"  name="img_1"  ]
+[tb_image_show  time="1000"  storage="default/time_17.5.webp"  width="1280"  height="720"  name="img_2"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [wait  time="1500"  ]
 [tb_image_hide  time="1000"  ]
@@ -23,7 +23,7 @@
 [chara_show  name="ナゾD"  time="600"  wait="true"  width="505"  height="357"  left="654"  top="108"  storage="chara/4/ハートつみき.webp"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （ほかのナゾも黒くなってる。やっぱりこの招待状が原因なんだ。）[p]
 [_tb_end_text]
 
@@ -33,7 +33,7 @@
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 え、あ、はい[p]
 み、皆さんもですか？[p]
 （やばい、緊張する～）[p]
@@ -48,7 +48,7 @@ Aさんもよろしくっす[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 あ、はい大丈夫です[p]
 （なんかチャラいな）[p]
 [_tb_end_text]
@@ -59,7 +59,7 @@ Aさんもよろしくっす[p]
 [wait  time="500"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （あの子も招待されたのかな？）[p]
 [_tb_end_text]
 
@@ -92,15 +92,21 @@ Aさんもよろしくっす[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 え、そんな、すみませんっ！[p]
 （ひえー、怖いナゾを怒らせちゃったよ）[p]
 [_tb_end_text]
 
 [chara_hide_all  time="1000"  wait="true"  ]
-[tb_image_show  time="1000"  storage="default/大広間.webp"  width="227"  height="441"  x="526"  y="25"  _clickable_img=""  name="img_35"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_b = true; f.unlock_nazo_b_p1 = true"]
+[eval exp="f.unlock_nazo_d = true; f.unlock_nazo_d_p1 = true"]
+[eval exp="f.unlock_nazo_e = true; f.unlock_nazo_e_p1 = true"]
+[_tb_end_tyrano_code]
+
+[tb_image_show  time="1000"  storage="default/大広間.webp"  width="227"  height="441"  x="526"  y="25"  _clickable_img=""  name="img_38"  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 じゃあ、開けてみますね…[p]
 
 [_tb_end_text]
@@ -111,11 +117,15 @@ Aさんもよろしくっす[p]
 
 [tb_image_hide  time="100"  ]
 [playse  volume="100"  time="1000"  buf="0"  storage="不気味な出現音2.mp3"  ]
-[tb_image_show  time="1000"  storage="default/法則：大広間.webp"  width="581"  height="413"  x="350"  y="95"  _clickable_img=""  name="img_40"  ]
+[tb_image_show  time="1000"  storage="default/法則：大広間.webp"  width="581"  height="413"  x="350"  y="95"  _clickable_img=""  name="img_43"  ]
 [wait  time="1000"  ]
 [tb_alert_dialog  label_ok="OK"  text="「法則：大広間」を入手しました"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_1 = true; f.unlock_doc_1_p1 = true"]
+[_tb_end_tyrano_code]
+
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ん？[p]
 なんだ今の感覚は？[p]
 [_tb_end_text]
@@ -133,7 +143,7 @@ Aさんもよろしくっす[p]
 え、あ、あれ、ナゾAさんちょっと変わりました…？[p]
 [_tb_end_text]
 
-[tb_image_show  time="1000"  storage="default/数字.webp"  width="505"  height="357"  x="406"  y="108"  name="img_47"  ]
+[tb_image_show  time="1000"  storage="default/数字.webp"  width="505"  height="357"  x="406"  y="108"  name="img_51"  ]
 [tb_start_text mode=1 ]
 #ナゾB
 ほんとだ、ちょっと変わってんじゃん[p]
@@ -146,21 +156,25 @@ Aさん早速イメチェンっすか？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 いや、そんなつもりはないけど…[p]
 （さっきの感覚と関係あるのか？）[p]
 [_tb_end_text]
 
 [tb_image_hide  time="1000"  ]
 [tb_start_tyrano_code]
-[tb_image_show time="300" storage="default/音階.webp" width="505" height="357" x="80" y="108" wait="false" ]
-[tb_image_show time="300" storage="default/数字.webp" width="505" height="357" x="700" y="108" wait="true" ]
+[image storage="default/音階.webp" layer="1" page="fore" visible="true" width="505" height="357" x="80" y="108" time="1000" wait="false"]
+[image storage="default/数字.webp" layer="1" page="fore" visible="true" width="505" height="357" x="700" y="108" time="1000" wait="true"]
 [_tb_end_tyrano_code]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （「ドレミの歌」が「数字」に変わってるのか）[p]
 [_tb_end_text]
+
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_a_p2 = true"]
+[_tb_end_tyrano_code]
 
 [wait  time="2000"  ]
 [chara_hide  name="ナゾA"  time="600"  wait="false"  pos_mode="false"  ]
@@ -191,7 +205,7 @@ Aさん早速イメチェンっすか？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （確かに不気味だな…）[p]
 [_tb_end_text]
 
@@ -211,7 +225,7 @@ Aさん早速イメチェンっすか？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ！？[p]
 [_tb_end_text]
 
@@ -235,6 +249,10 @@ Aさん早速イメチェンっすか？[p]
 みんニャ失礼だニャ！[p]
 ぼくのニャ前は茶々丸。みんニャを招待したこの館の管理人だニャ。[p]
 [_tb_end_text]
+
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_2 = true; f.unlock_doc_2_p1= true"]
+[_tb_end_tyrano_code]
 
 [tb_start_text mode=1 ]
 #ナゾB
@@ -312,7 +330,7 @@ Dくんはいい心意気だニャ[p]
 
 [tb_image_hide  time="0"  ]
 [playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
-[tb_image_show  time="1000"  name="img_98"  storage="default/rule1.webp"  width="590"  height="420"  x="346"  y="61"  _clickable_img=""  ]
+[tb_image_show  time="300"  name="img_104"  storage="default/rule1.webp"  width="590"  height="420"  x="346"  y="61"  _clickable_img=""  ]
 [glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="次へ"  x="781"  y="525"  width="102"  height="51"  _clickable_img=""  target="*page2"  ]
 [s  ]
 *page2
@@ -320,7 +338,7 @@ Dくんはいい心意気だニャ[p]
 [playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
 [cm  ]
 [tb_image_hide  time="0"  ]
-[tb_image_show  time="1000"  storage="default/rule2.webp"  width="590"  height="420"  x="346"  y="61"  name="img_105"  ]
+[tb_image_show  time="300"  storage="default/rule2.webp"  width="590"  height="420"  x="346"  y="61"  name="img_111"  ]
 [glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="次へ"  x="781"  y="525"  width="102"  height="51"  _clickable_img=""  target="*page3"  ]
 [glink  color="btn_20_blue"  storage="scene3.ks"  size="20"  text="戻る"  x="380"  y="523"  width="102"  height="51"  _clickable_img=""  target="*page1"  ]
 [s  ]
@@ -329,7 +347,7 @@ Dくんはいい心意気だニャ[p]
 [playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
 [cm  ]
 [tb_image_hide  time="0"  ]
-[tb_image_show  time="1000"  storage="default/rule3.webp"  width="590"  height="420"  x="346"  y="61"  name="img_113"  ]
+[tb_image_show  time="300"  storage="default/rule3.webp"  width="590"  height="420"  x="346"  y="61"  name="img_119"  ]
 [glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="次へ"  x="781"  y="525"  width="102"  height="51"  _clickable_img=""  target="*page4"  ]
 [glink  color="btn_20_blue"  storage="scene3.ks"  size="20"  text="戻る"  x="380"  y="523"  width="102"  height="51"  _clickable_img=""  target="*page2"  ]
 [s  ]
@@ -338,14 +356,14 @@ Dくんはいい心意気だニャ[p]
 [playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
 [cm  ]
 [tb_image_hide  time="0"  ]
-[tb_image_show  time="1000"  storage="default/rule4.webp"  width="590"  height="420"  x="346"  y="61"  name="img_121"  ]
+[tb_image_show  time="300"  storage="default/rule4.webp"  width="590"  height="420"  x="346"  y="61"  name="img_127"  ]
 [glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="次へ"  x="781"  y="525"  width="102"  height="51"  _clickable_img=""  target="*page5"  ]
 [glink  color="btn_20_blue"  storage="scene3.ks"  size="20"  text="戻る"  x="380"  y="523"  width="102"  height="51"  _clickable_img=""  target="*page3"  ]
 [s  ]
 *page5
 
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="1000"  storage="default/rule_room1.webp"  width="590"  height="420"  x="346"  y="61"  name="img_127"  ]
+[tb_image_show  time="300"  storage="default/rule_room1.webp"  width="590"  height="420"  x="346"  y="61"  name="img_133"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #茶々丸
@@ -357,6 +375,14 @@ Dくんはいい心意気だニャ[p]
 （なるほど）[p]
 （大広間のドアを開けたときの感覚は、法則が分かった時のものだったのか）[p]
 [_tb_end_text]
+
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_3 = true; f.unlock_doc_3_p1 = true"]
+[eval exp=" f.unlock_doc_3_p2 = true"]
+[eval exp=" f.unlock_doc_3_p3 = true"]
+[eval exp=" f.unlock_doc_3_p4 = true"]
+[eval exp=" f.unlock_doc_1_p2 = true"]
+[_tb_end_tyrano_code]
 
 [tb_hide_message_window  ]
 [tb_show_message_window  ]
@@ -420,12 +446,39 @@ Dくんはいい心意気だニャ[p]
 き、消えたっすね[p]
 #ナゾB
 なんだったんだ、一体[p]
+とりあえずこれからどうするか話し合うぞ[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
 [chara_hide_all  time="1000"  wait="true"  ]
+*tutorial1
+
+[tb_image_hide  time="0"  ]
+[tb_image_show  time="300"  name="img_163"  storage="default/tutorial1webp.webp"  width="820"  height="439"  x="224"  y="58"  _clickable_img=""  ]
+[playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
+[glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="次へ"  x="900"  y="525"  width="102"  height="51"  _clickable_img=""  target="*tutorial2"  ]
+[s  ]
+*tutorial2
+
+[playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
+[cm  ]
+[tb_image_hide  time="0"  ]
+[tb_image_show  time="300"  name="img_171"  storage="default/tutorial2webp.webp"  width="820"  height="439"  x="224"  y="58"  _clickable_img=""  ]
+[glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="次へ"  x="900"  y="525"  width="102"  height="51"  _clickable_img=""  target="*tutorial3"  ]
+[glink  color="btn_20_blue"  storage="scene3.ks"  size="20"  text="戻る"  x="300"  y="523"  width="102"  height="51"  _clickable_img=""  target="*tutorial1"  ]
+[s  ]
+*tutorial3
+
+[playse  volume="100"  time="1000"  buf="0"  storage="page.mp3"  ]
+[cm  ]
+[tb_image_hide  time="0"  ]
+[tb_image_show  time="300"  name="img_179"  storage="default/tutorial3webp.webp"  width="820"  height="439"  x="224"  y="58"  _clickable_img=""  ]
+[glink  color="btn_20_lime"  storage="scene3.ks"  size="20"  text="OK"  x="900"  y="525"  width="102"  height="51"  _clickable_img=""  target="*explore_start"  ]
+[glink  color="btn_20_blue"  storage="scene3.ks"  size="20"  text="戻る"  x="300"  y="523"  width="102"  height="51"  _clickable_img=""  target="*tutorial2"  ]
+[s  ]
 *explore_start
 
+[tb_image_hide  time="300"  ]
 [tb_start_tyrano_code]
 [cm]
 
@@ -441,15 +494,14 @@ Dくんはいい心意気だニャ[p]
 [tb_start_tyrano_code]
 [image storage="default/混戦.webp" layer="1" page="fore" visible="true" x="66" y="245" width="284" height="200" time="1000" wait="false"]
 [image storage="default/ハートつみき.webp" layer="1" page="fore" visible="true" x="477" y="245" width="284" height="200" time="1000" wait="false"]
-[image storage="default/家賛成.webp" layer="1" page="fore" visible="true" x="855" y="245" width="284" height="200" time="1000" wait="true"]
+[image storage="default/家賛成.webp" layer="1" page="fore" visible="true" x="855" y="245" width="284" height="200" time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="180" y="170"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="590" y="500"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="590" y="170"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="970" y="170"  time="1000" wait="true"]
 [_tb_end_tyrano_code]
 
 [clickable  storage="scene3.ks"  x="0"  y="0"  width="1280"  height="720"  target="*check_env"  _clickable_img=""  ]
-[tb_start_tyrano_code]
-; ▼ 探索中だけ表示する「FILE」ボタン
-[button graphic="file_btn.webp" x="1000" y="20" storage="file.ks" target="*start_file" role="sleepgame"]
-[_tb_end_tyrano_code]
-
 [clickable  storage="scene3.ks"  x="66"  y="245"  width="284"  height="200"  target="*talk_B"  ]
 [clickable  storage="scene3.ks"  x="477"  y="245"  width="284"  height="200"  target="*talk_D"  ]
 [clickable  storage="scene3.ks"  x="855"  y="245"  width="284"  height="200"  target="*talk_E"  ]
@@ -458,7 +510,7 @@ Dくんはいい心意気だニャ[p]
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="1000"  ]
-[chara_show  name="ナゾB"  time="1000"  wait="true"  storage="chara/2/混戦.webp"  width="533"  height="379"  top="108"  left="373"  reflect="false"  ]
+[chara_show  name="ナゾB"  time="600"  wait="true"  storage="chara/2/混戦.webp"  width="533"  height="379"  top="108"  left="373"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾB
@@ -474,14 +526,14 @@ Dくんはいい心意気だニャ[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[chara_hide  name="ナゾB"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾB"  time="300"  wait="true"  pos_mode="true"  ]
 [tb_eval  exp="f.talk_B_1=1"  name="talk_B_1"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [jump  storage="scene3.ks"  target="*explore_start"  ]
 *talk_D
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="1000"  ]
-[chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/ハートつみき.webp"  width="533"  height="379"  top="108"  left="373"  reflect="false"  ]
+[chara_show  name="ナゾD"  time="600"  wait="true"  storage="chara/4/ハートつみき.webp"  width="533"  height="379"  top="108"  left="373"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾD
@@ -501,14 +553,14 @@ Dくんはいい心意気だニャ[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[chara_hide  name="ナゾD"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾD"  time="300"  wait="true"  pos_mode="true"  ]
 [tb_eval  exp="f.talk_D_1=1"  name="talk_D_1"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [jump  storage="scene3.ks"  target="*explore_start"  ]
 *talk_E
 
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="1000"  ]
-[chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/家賛成.webp"  width="533"  height="379"  top="108"  left="373"  reflect="false"  ]
+[chara_show  name="ナゾE"  time="600"  wait="true"  storage="chara/5/家賛成.webp"  width="533"  height="379"  top="108"  left="373"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾE
@@ -545,7 +597,7 @@ Aさんもでしたか[p]
 [chara_show  name="茶々丸"  time="1000"  wait="true"  storage="chara/6/茶々丸.webp"  width="555"  height="374"  top="1000"  left="56"  reflect="false"  ]
 [chara_move  name="茶々丸"  anim="true"  time="1000"  effect="linear"  wait="false"  left="56"  top="111"  ]
 [playbgm  volume="50"  time="1000"  loop="true"  storage="奇妙な案内人.mp3"  fadein="true"  ]
-[chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/家賛成.webp"  width="533"  height="379"  top="108"  left="650"  reflect="false"  ]
+[chara_show  name="ナゾE"  time="600"  wait="true"  storage="chara/5/家賛成.webp"  width="533"  height="379"  top="108"  left="650"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #茶々丸
@@ -558,21 +610,22 @@ Aさんもでしたか[p]
 過去の記憶がニャいのは理由があるけど、それは言わニャいニャ[p]
 [_tb_end_text]
 
-[chara_hide  name="茶々丸"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="茶々丸"  time="300"  wait="true"  pos_mode="true"  ]
 [stopbgm  time="2000"  fadeout="true"  ]
 [playbgm  volume="50"  time="1000"  loop="true"  fadein="true"  storage="texture2.mp3"  ]
 [l  ]
 [chara_move  name="ナゾE"  anim="true"  time="300"  effect="linear"  wait="true"  top="108"  left="373"  ]
 [tb_start_text mode=1 ]
 #ナゾE
+き、消えちゃいました[p]
 い、一体どういうことなんでしょう？[p]
-#
+#ナゾA
 さあ？[p]
 でも茶々丸の言うことを信じるなら僕らは初対面ってことになりますね[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[chara_hide  name="ナゾE"  time="1000"  wait="true"  pos_mode="true"  ]
+[chara_hide  name="ナゾE"  time="300"  wait="true"  pos_mode="true"  ]
 [tb_eval  exp="f.talk_E_1=1"  name="talk_E_1"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [jump  storage="scene3.ks"  target="*explore_start"  ]
 *check_env

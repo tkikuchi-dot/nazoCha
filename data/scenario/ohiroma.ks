@@ -1,5 +1,6 @@
 [_tb_system_call storage=system/_ohiroma.ks]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *start
 
 [cm  ]
@@ -8,8 +9,6 @@
 [tb_hide_message_window  ]
 [bg  time="1000"  method="crossfade"  storage="大広間中.webp"  ]
 [tb_start_tyrano_code]
-さて、ここからどうしようか
-
 ; MAPボタン（例）
 [button graphic="btn_map.webp" target="*open_map" x="20" y="450"]
 [button graphic="btn_think.webp" target="*think" x="20" y="540"]
@@ -29,7 +28,7 @@
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 大広間[p]
 最初にここに来たときはこんなことになるなんて想像さえしてなかったな[p]
 [_tb_end_text]
@@ -46,10 +45,10 @@
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="600"  storage="default/家賛成.webp"  width="467"  height="331"  x="400"  y="100"  ]
+[tb_image_show  time="600"  storage="default/家賛成.webp"  width="467"  height="331"  x="400"  y="100"  name="img_31"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ナゾEさんは少し変わってるな[p]
 この時の答えが何かを答えればいいんだな[p]
 [_tb_end_text]
@@ -354,18 +353,60 @@
 [eval exp="f.answer = f.answer + 'ん'"]
 @jump target="*show_keyboard"
 
+; ===================================
+; ▼ 記号・変換ボタンの処理（上書きすり替え方式）
+; ===================================
 *c_daku
-[eval exp="f.answer = f.answer + '゛'"]
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1); // 最後の1文字を取得
+var rest = ans.slice(0, -1); // それ以外の文字
+// 濁音への変換辞書
+var map = {'か':'が','き':'ぎ','く':'ぐ','け':'げ','こ':'ご',
+'さ':'ざ','し':'じ','す':'ず','せ':'ぜ','そ':'ぞ',
+'た':'だ','ち':'ぢ','つ':'づ','て':'で','と':'ど',
+'は':'ば','ひ':'び','ふ':'ぶ','へ':'べ','ほ':'ぼ'};
+if (map[last]) f.answer = rest + map[last]; // 変換できればすり替え
+}
+[endscript]
 @jump target="*show_keyboard"
+
 *c_han
-[eval exp="f.answer = f.answer + '゜'"]
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1);
+var rest = ans.slice(0, -1);
+// 半濁音への変換辞書
+var map = {'は':'ぱ','ひ':'ぴ','ふ':'ぷ','へ':'ぺ','ほ':'ぽ'};
+if (map[last]) f.answer = rest + map[last];
+}
+[endscript]
 @jump target="*show_keyboard"
+
 *c_cho
+; 伸ばす棒はそのまま追加でOK
 [eval exp="f.answer = f.answer + 'ー'"]
 @jump target="*show_keyboard"
 
 *mod_small
-; 小文字変換の処理（必要であれば実装）
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1);
+var rest = ans.slice(0, -1);
+// 小文字への変換辞書
+var map = {'あ':'ぁ','い':'ぃ','う':'ぅ','え':'ぇ','お':'ぉ',
+'や':'ゃ','ゆ':'ゅ','よ':'ょ','つ':'っ','わ':'ゎ'};
+// 小文字から大文字に戻す辞書（連打した時用）
+var rev = {'ぁ':'あ','ぃ':'い','ぅ':'う','ぇ':'え','ぉ':'お',
+'ゃ':'や','ゅ':'ゆ','ょ':'よ','っ':'つ','ゎ':'わ'};
+
+if (map[last]) f.answer = rest + map[last];
+else if (rev[last]) f.answer = rest + rev[last];
+}
+[endscript]
 @jump target="*show_keyboard"
 
 ; ===================================
@@ -395,7 +436,7 @@
 [layopt layer="message0" visible="true"]
 
 [if exp="f.answer == 'こうさん'"]
-#
+#ナゾA
 『こうさん』ですね！[p]
 ; ▼ 正解時のジャンプ
 @jump target="*true"
@@ -419,7 +460,7 @@
 [_tb_end_text]
 
 [tb_start_tyrano_code]
-#
+#ナゾA
 よし、なんとか正解したぞ[p]
 
 ; ▼ フラグを立てる

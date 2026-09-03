@@ -1,6 +1,6 @@
 [_tb_system_call storage=system/_scene6.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *morning
 
 [stopbgm  time="1000"  ]
@@ -9,7 +9,7 @@
 [wait  time="1500"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ・・・・・・・[p]
 ・・・なんだっけこの部屋[p]
 ・・・ああそうか　思い出した[p]
@@ -32,7 +32,7 @@
 [cm  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 もう少し部屋で休もう[p]
 [_tb_end_text]
 
@@ -45,12 +45,12 @@
 [cm  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 よし、部屋から出てみんなと合流するか[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[tb_image_show  time="1000"  storage="default/黒背景.webp"  width="1280"  height="720"  name="img_28"  ]
+[tb_image_show  time="1000"  storage="default/黒背景.webp"  width="1280"  height="720"  name="img_29"  ]
 [tb_image_hide  time="0"  ]
 [bg  time="0"  method="vanishIn"  storage="impact3.webp"  ]
 [playse  volume="100"  time="1000"  buf="0"  storage="忍び寄る恐怖.mp3"  ]
@@ -67,12 +67,12 @@
 [font  size="28"  color="0xfa0000"  bold="true"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 う、うわああぁぁああぁああぁぁぁ！！！！[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[tb_image_show  time="1000"  storage="default/黒背景.webp"  width="1280"  height="720"  name="img_46"  ]
+[tb_image_show  time="1000"  storage="default/黒背景.webp"  width="1280"  height="720"  name="img_47"  ]
 [reset_camera  time="0"  wait="true"  ]
 [tb_image_hide  time="1000"  ]
 [playbgm  volume="60"  time="1000"  loop="true"  storage="Metropolis_Destruction.mp3"  ]
@@ -91,7 +91,13 @@
 [_tb_end_tyrano_code]
 
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="1000"  storage="default/btn_think.webp"  width="156"  height="67"  x="91"  y="423"  _clickable_img=""  name="img_53"  ]
+[tb_start_tyrano_code]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="730" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="1000" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="350" y="480"  time="1000" wait="true"]
+[_tb_end_tyrano_code]
+
+[tb_image_show  time="1000"  storage="default/btn_think.webp"  width="156"  height="67"  x="91"  y="423"  _clickable_img=""  name="img_55"  ]
 [clickable  storage="scene6.ks"  x="0"  y="0"  width="1280"  height="720"  target="*round"  ]
 [clickable  storage="scene6.ks"  x="619"  y="523"  width="297"  height="131"  target="*shitai"  _clickable_img=""  ]
 [clickable  storage="scene6.ks"  x="958"  y="445"  width="326"  height="259"  target="*kekkon"  _clickable_img=""  ]
@@ -106,7 +112,7 @@
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 廊下だ[p]
 ナゾCさんが血を流して倒れている[p]
 [_tb_end_text]
@@ -123,10 +129,10 @@
 [cm  ]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  x="370"  y="108"  name="img_78"  _clickable_img=""  ]
+[tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  x="370"  y="108"  name="img_80"  _clickable_img=""  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ・・・息がない[p]
 既にもう・・・・・[p]
 [_tb_end_text]
@@ -139,10 +145,10 @@
 [cm  ]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="1000"  ]
-[tb_image_show  time="1000"  storage="default/kekkon.webp"  width="505"  height="357"  x="370"  y="108"  name="img_88"  ]
+[tb_image_show  time="1000"  storage="default/kekkon.webp"  width="505"  height="357"  x="370"  y="108"  name="img_90"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 生々しい血の跡がある[p]
 [_tb_end_text]
 
@@ -156,7 +162,7 @@
 [tb_image_hide  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ・・・・・！！！[p]
 ナゾCさんが倒れている・・・！[p]
 [_tb_end_text]
@@ -169,7 +175,7 @@
 [mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
 [stopbgm  time="3000"  fadeout="true"  ]
 [wait  time="3000"  ]
-[tb_image_show  time="1000"  storage="default/黒背景.webp"  width="1280"  height="720"  name="img_107"  ]
+[tb_image_show  time="1000"  storage="default/黒背景.webp"  width="1280"  height="720"  name="img_109"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -181,7 +187,7 @@
 
 [tb_hide_message_window  ]
 [wait  time="1500"  ]
-[tb_image_show  time="1000"  storage="default/time_7.webp"  width="1280"  height="720"  name="img_113"  ]
+[tb_image_show  time="1000"  storage="default/time_7.webp"  width="1280"  height="720"  name="img_115"  ]
 [playbgm  volume="25"  time="2000"  loop="true"  storage="Dystopian_Walker.mp3"  fadein="true"  ]
 [wait  time="1500"  ]
 [tb_image_hide  time="1000"  ]
@@ -294,6 +300,36 @@
 [_tb_end_text]
 
 [tb_hide_message_window  ]
+[wait  time="500"  ]
+[tb_start_tyrano_code]
+; =====================================
+; ▼ 捜査開始 カットイン演出
+; =====================================
+[layopt layer="1" visible="true"]
+
+; folder="image" を削除し、デフォルトの fgimage フォルダを読ませます
+[image layer="1" name="obi" storage="default/obi.webp" x="1280" y="300"]
+[image layer="1" name="text" storage="default/text_sousakaisi.webp" x="1400" y="340"]
+
+; スライドイン（左へ動く）
+[anim name="obi" left="0" time="300"]
+[anim name="text" left="450" time="400"]
+[wa]
+
+; 1秒間ストップして見せる
+[wait time="1500"]
+
+; スライドアウト（さらに左へ消える）
+[anim name="obi" left="-1280" time="300"]
+[anim name="text" left="-1280" time="300"]
+[wa]
+
+; アニメーションが終わった画像を綺麗に消去
+[free name="obi" layer="1"]
+[free name="text" layer="1"]
+; =====================================
+[_tb_end_tyrano_code]
+
 [mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
 [wait  time="1500"  ]
 *sousa
@@ -313,10 +349,20 @@
 [chara_hide_all  time="1000"  wait="true"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [tb_image_hide  time="1000"  ]
+[tb_start_tyrano_code]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="730" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="1000" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="350" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="170" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="587" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="965" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="587" y="380"  time="1000" wait="false"]
+[_tb_end_tyrano_code]
+
 [chara_show  name="ナゾB"  time="1000"  wait="false"  storage="chara/2/混戦.webp"  width="284"  height="200"  left="60"  top="180"  ]
 [chara_show  name="ナゾD"  time="1000"  wait="false"  storage="chara/4/ハトタイヨウ.webp"  width="284"  height="200"  left="477"  top="180"  ]
 [chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/杖賛成.webp"  width="284"  height="200"  left="855"  top="180"  reflect="false"  ]
-[tb_image_show  time="1000"  storage="default/btn_think.webp"  width="156"  height="67"  x="91"  y="460"  _clickable_img=""  name="img_146"  ]
+[tb_image_show  time="1000"  storage="default/btn_think.webp"  width="156"  height="67"  x="91"  y="460"  _clickable_img=""  name="img_151"  ]
 [clickable  storage="scene6.ks"  x="0"  y="0"  width="1280"  height="720"  target="*round2"  ]
 [clickable  storage="scene6.ks"  x="481"  y="0"  width="210"  height="529"  target="*bitiku"  _clickable_img=""  ]
 [clickable  storage="scene6.ks"  x="619"  y="523"  width="297"  height="131"  target="*shitai2"  _clickable_img=""  ]
@@ -336,7 +382,7 @@
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 廊下だ[p]
 ナゾCさんが血を流して倒れている[p]
 [_tb_end_text]
@@ -358,7 +404,7 @@
 [wait  time="1500"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 備蓄庫の中[p]
 少し荒らされているようだ[p]
 [_tb_end_text]
@@ -374,16 +420,21 @@
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="300"  ]
 [chara_hide_all  time="300"  wait="true"  ]
-[tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  x="375"  y="108"  name="img_191"  ]
+[tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  x="375"  y="108"  name="img_196"  ]
 [wait  time="3000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 喉を切られて死んでいる[p]
 右下の「犯人」という文字だけ確認できるが、あとは血のせいで見えない[p]
 [_tb_end_text]
 
 [tb_alert_dialog  label_ok="OK"  text="手がかり「犯人」を入手しました"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_clue_1 = true; f.unlock_clue_1_p1= true"]
+[eval exp="f.unlock_nazo_c_p3= true"]
+[_tb_end_tyrano_code]
+
 [playse  volume="50"  time="1000"  buf="0"  storage="決定ボタンを押す40.mp3"  ]
 [tb_hide_message_window  ]
 [tb_eval  exp="f.sousa1_2=1"  name="sousa1_2"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
@@ -394,28 +445,32 @@
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_image_hide  time="300"  ]
 [chara_hide_all  time="300"  wait="true"  ]
-[tb_image_show  time="1000"  storage="default/kekkon.webp"  width="505"  height="357"  x="375"  y="108"  name="img_205"  ]
+[tb_image_show  time="1000"  storage="default/kekkon.webp"  width="505"  height="357"  x="375"  y="108"  name="img_211"  ]
 [wait  time="3000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 生々しい血の跡がある[p]
 ・・・ん？・・・この血痕・・・[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
 [mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
-[tb_image_show  time="1000"  storage="default/to_roomC.webp"  width="1280"  height="720"  name="img_211"  ]
+[tb_image_show  time="1000"  storage="default/to_roomC.webp"  width="1280"  height="720"  name="img_217"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [wait  time="2000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 Cさんの部屋まで続いている・・・！[p]
 犯行現場は備蓄庫の前じゃないのか？[p]
 [_tb_end_text]
 
 [tb_alert_dialog  label_ok="OK"  text="手がかり「血痕」を入手しました"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_clue_2 = true; f.unlock_clue_2_p1= true"]
+[_tb_end_tyrano_code]
+
 [playse  volume="50"  time="1000"  buf="0"  storage="決定ボタンを押す40.mp3"  ]
 [tb_hide_message_window  ]
 [tb_eval  exp="f.sousa1_3=1"  name="sousa1_3"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
@@ -428,7 +483,7 @@ Cさんの部屋まで続いている・・・！[p]
 [chara_hide_all  time="300"  wait="true"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 捜査って何をすればいいんだ・・・？[p]
 とりあえず色々調べてみるか[p]
 [_tb_end_text]
@@ -467,6 +522,10 @@ Cさん[p]
 なんで死んじゃったんすかね・・・[p]
 [_tb_end_text]
 
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_d_p3= true"]
+[_tb_end_tyrano_code]
+
 [tb_hide_message_window  ]
 [tb_eval  exp="f.sousa1_6=1"  name="sousa1_6"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [jump  storage="scene6.ks"  target="*sousa"  ]
@@ -480,7 +539,7 @@ Cさん[p]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #ナゾE
-ひ、ひぇ～ん[p]
+うぇ～ん[p]
 ひっぐ、ひっぐ[p]
 [_tb_end_text]
 
@@ -495,16 +554,22 @@ Cさん[p]
 [tb_image_hide  time="0"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [chara_show  name="茶々丸"  time="1000"  wait="true"  storage="chara/6/茶々丸.webp"  width="527"  height="355"  left="379"  top="97"  reflect="false"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_4 = true; f.unlock_doc_4_p1 = true"]
+[_tb_end_tyrano_code]
+
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #茶々丸
 捜査は順調のようだニャ[p]
-#
+#ナゾA
 順調なんですかね…[p]
 ちょっと分からないです[p]
 #茶々丸
 自信を持つニャ[p]
-じゃあ今この事件でおかしいと思うものを解決していくニャ[p]
+事件の概要をまとめたから気にニャったら資料を確認するニャ[p]
+じゃあ捜査で得た情報を発展させるニャ[p]
+今この事件でおかしいと思うものを解決していくニャ[p]
 まずはこの[font color="red" bold="true"]血痕から分かること[resetfont]を推理するニャ[p]
 [font color="red" bold="true"]二つの言葉を組み合わせて正しい文章を作る[resetfont]ニャ[p]
 [_tb_end_text]
@@ -621,11 +686,13 @@ Cさん[p]
 [layopt layer="message0" visible="true"]
 
 ; 完成した文章が正解かチェック
+#ナゾA
 [if exp="f.sentence == '犯行現場はナゾCの部屋だ'"]
 そうか……！『犯行現場はナゾCの部屋だ』！[p]
 ; ▼ 正解なら次のシナリオへ！
 ; @jump storage="next_scenario.ks" target="*start"
 [else]
+#ナゾA
 [emb exp="f.sentence"]……？ いや、これは違うな。もう一度考え直そう[p]
 ; ▼ 不正解なら最初からやり直し！
 @jump target="*start_puzzle"
@@ -637,7 +704,7 @@ Cさん[p]
 #茶々丸
 その通りだニャ[p]
 犯行現場はこの備蓄庫の前じゃなくてナゾCの部屋だニャ[p]
-#
+#ナゾA
 つまりナゾCさんは何者かに襲われた後、自分で移動したってことですか？[p]
 #茶々丸
 そういうことだニャ[p]
@@ -655,9 +722,9 @@ Cさん[p]
 [eval exp="f.sentence = ''"]
 [eval exp="f.click_count = 0"]
 
-[eval exp="f.btn1 = 0"] ; 正解：犯人を
+[eval exp="f.btn1 = 0"] ; 正解：犯人が誰かを
 [eval exp="f.btn2 = 0"] ; 正解：伝えようとしていた
-[eval exp="f.btn3 = 0"] ; ダミー：暗号を
+[eval exp="f.btn3 = 0"] ; ダミー：犯行現場を
 [eval exp="f.btn4 = 0"] ; ダミー：凶器を
 [eval exp="f.btn5 = 0"] ; ダミー：救助を
 [eval exp="f.btn6 = 0"] ; ダミー：隠そうとしていた
@@ -673,10 +740,10 @@ Cさん[p]
 ; ▼ ② 選択肢の配置（1280×720に合わせて2列に配置）
 ; --- 1列目（4つ） y=350 ---
 [if exp="f.btn1 == 0"]
-[glink color="black" text="犯人を" target="*click_1_2" x="70" y="430" width="185" size="20"]
+[glink color="black" text="犯人が誰かを" target="*click_1_2" x="70" y="430" width="185" size="20"]
 [endif]
 [if exp="f.btn3 == 0"]
-[glink color="black" text="暗号を" target="*click_3_2" x="360" y="430" width="185" size="20"]
+[glink color="black" text="犯行現場を" target="*click_3_2" x="360" y="430" width="185" size="20"]
 [endif]
 [if exp="f.btn4 == 0"]
 [glink color="black" text="凶器を" target="*click_4_2" x="650" y="430" width="185" size="20"]
@@ -702,7 +769,7 @@ Cさん[p]
 ; ▼ 各ボタンを押した時の処理（文字の足し算）
 *click_1_2
 [eval exp="f.btn1 = 1"]
-[eval exp="f.sentence = f.sentence + '犯人を'"]
+[eval exp="f.sentence = f.sentence + '犯人が誰かを'"]
 [eval exp="f.click_count = f.click_count + 1"]
 @jump target="*check_answer_2"
 
@@ -714,7 +781,7 @@ Cさん[p]
 
 *click_3_2
 [eval exp="f.btn3 = 1"]
-[eval exp="f.sentence = f.sentence + '暗号を'"]
+[eval exp="f.sentence = f.sentence + '犯行現場を'"]
 [eval exp="f.click_count = f.click_count + 1"]
 @jump target="*check_answer_2"
 
@@ -757,11 +824,13 @@ Cさん[p]
 [layopt layer="message0" visible="true"]
 
 ; 完成した文章が正解かチェック
-[if exp="f.sentence == '犯人を伝えようとしていた'"]
-そうか……！ナゾCさんはダイイングメッセージで『犯人を伝えようとしていた』んだ！[p]
+#ナゾA
+[if exp="f.sentence == '犯人が誰かを伝えようとしていた'"]
+そうか……！ナゾCさんはダイイングメッセージで『犯人が誰かを伝えようとしていた』んだ！[p]
 ; ▼ 正解なら次のシナリオへ！
 ; @jump storage="next_scenario.ks" target="*start"
 [else]
+#ナゾA
 [emb exp="f.sentence"]……？ いや、これだとおかしいな。もう一度考え直そう[p]
 ; ▼ 不正解なら最初からやり直し！
 @jump target="*start_puzzle2"
@@ -769,7 +838,7 @@ Cさん[p]
 [_tb_end_tyrano_code]
 
 [chara_hide_all  time="1000"  wait="true"  ]
-[tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  y="108"  x="375"  name="img_278"  ]
+[tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  y="108"  x="375"  name="img_287"  ]
 [tb_start_text mode=1 ]
 #茶々丸
 その通りニャ[p]
@@ -803,7 +872,7 @@ Cさん[p]
 [cm  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （この血を何とかする方法・・・）[p]
 [_tb_end_text]
 
@@ -817,11 +886,11 @@ Cさん[p]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 厨房に連れて行こう[p]
 #ナゾB
 連れて行ってどうするんだ？[p]
-#
+#ナゾA
 ・・・ッ！[p]
 それは考えてないけど・・・[p]
 #茶々丸
@@ -836,11 +905,11 @@ Cさん[p]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ぼくの部屋に連れて行こう[p]
 #ナゾB
 連れて行ってどうするんだ？[p]
-#
+#ナゾA
 ・・・ッ！[p]
 それは考えてないけど・・・[p]
 #ナゾB
@@ -857,11 +926,11 @@ Cさん[p]
 [playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 大浴場に連れて行こう[p]
 #ナゾB
 連れて行ってどうするんだ？[p]
-#
+#ナゾA
 血を洗って落とすんです！[p]
 #ナゾB
 なるほど[p]
@@ -870,7 +939,7 @@ Cさん[p]
 いい考えニャ[p]
 じゃあナゾAがナゾCを持つニャ[p]
 連れて行ってあげるニャ[p]
-#
+#ナゾA
 は、はい[p]
 分かりました[p]
 よ・・いしょっと[p]
@@ -878,10 +947,10 @@ Cさん[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
-[tb_image_show  time="1000"  storage="default/shitaiato.webp"  width="543"  height="365"  x="364"  y="105"  _clickable_img=""  name="img_309"  ]
+[tb_image_show  time="1000"  storage="default/shitaiato.webp"  width="543"  height="365"  x="364"  y="105"  _clickable_img=""  name="img_318"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 Cさんが倒れていた場所に・・・ボタン？[p]
 #ナゾD
 なんすかあれ？[p]
@@ -894,21 +963,38 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 さっきも説明した部屋ごとのカギを開けた回数がリセットされるボタンみたいニャ[p]
 これはナゾCが力尽きて倒れた拍子に押されたみたいニャ[p]
 一度押されたら24時間は押せニャいから、時間を止めた今押すことはできニャいニャ[p]
+これはしまっておくニャ[p]
+気を取りニャおして[p]
+大浴場までのルートを考えるニャ[p]
+ナゾAの他には連れて行けるのは1名だけニャ[p]
+どうやったら大浴場の中に入れるのか考えるニャ[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
 [tb_alert_dialog  label_ok="OK"  text="大浴場までのルートを考えよう"  ]
+[mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
 *route
 
-[mask_off  time="1000"  effect="fadeOut"  ]
-[tb_image_hide  time="300"  ]
+[tb_image_hide  time="0"  ]
 [tb_hide_message_window  ]
-[chara_hide_all  time="300"  wait="true"  ]
+[chara_hide_all  time="0"  wait="true"  ]
+[bg  time="0"  method="crossfade"  storage="死体発見.webp"  ]
+[mask_off  time="1000"  effect="fadeOut"  ]
 [chara_show  name="ナゾB"  time="600"  wait="false"  storage="chara/2/混戦.webp"  width="243"  height="170"  left="355"  top="180"  ]
 [chara_show  name="ナゾD"  time="600"  wait="false"  storage="chara/4/ハトタイヨウ.webp"  width="243"  height="170"  left="660"  top="180"  ]
 [chara_show  name="ナゾE"  time="600"  wait="false"  storage="chara/5/杖賛成.webp"  width="243"  height="170"  left="965"  top="180"  reflect="false"  ]
 [chara_show  name="茶々丸"  time="600"  wait="true"  storage="chara/6/茶々丸.webp"  width="300"  height="202"  left="50"  top="180"  ]
 [tb_image_show  time="600"  storage="default/btn_think.webp"  width="156"  height="67"  x="91"  y="460"  _clickable_img=""  name="img_323"  ]
+[tb_start_tyrano_code]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="730" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="1000" y="480"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="465" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="770" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="1065" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="190" y="100"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="300" y="500"  time="1000" wait="false"]
+[_tb_end_tyrano_code]
+
 [clickable  storage="scene6.ks"  x="0"  y="0"  width="1280"  height="720"  target="*round3"  ]
 [clickable  storage="scene6.ks"  x="619"  y="523"  width="297"  height="131"  target="*shitai3"  _clickable_img=""  ]
 [clickable  storage="scene6.ks"  x="958"  y="445"  width="326"  height="259"  target="*kekkon3"  _clickable_img=""  ]
@@ -928,7 +1014,7 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 [wait  time="1000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 一体ここで何が起こったんだろうか[p]
 [_tb_end_text]
 
@@ -947,7 +1033,7 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 [tb_image_show  time="1000"  storage="default/死体.webp"  width="505"  height="357"  y="108"  x="375"  name="img_353"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ナゾCさん・・・！[p]
 一体何を伝えたかったんだろう[p]
 ナゾCさんの無念を晴らすためにも犯人を突き止めないと・・・！[p]
@@ -964,7 +1050,7 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 [tb_image_show  time="1000"  storage="default/kekkon.webp"  width="505"  height="357"  x="375"  y="180"  name="img_363"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 生々しい血の跡がナゾCさんの部屋まで続いている[p]
 [_tb_end_text]
 
@@ -977,7 +1063,7 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 [chara_hide_all  time="1000"  wait="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 大浴場まで行くにはどうしたらいいだろう[p]
 この時間はぼくは「厨房」にしか行けそうにないな[p]
 まずはみんなに話を聞いてみよう[p]
@@ -1016,6 +1102,10 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 [_tb_end_text]
 
 [tb_image_show  time="1000"  storage="default/room_rule3.webp"  width="678"  height="482"  name="img_394"  x="319"  y="31"  _clickable_img=""  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_doc_1_p6= true"]
+[_tb_end_tyrano_code]
+
 [tb_start_text mode=1 ]
 #ナゾD
 休憩室の法則は[font color="red" bold="true"]「真ん中の文字を消す」[resetfont]っていう法則っす[p]
@@ -1037,7 +1127,7 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 [tb_start_text mode=1 ]
 #ナゾE
 え、Aさんの悲鳴を聞いてすぐ駆け付けました[p]
-[font color="red" bold="true"]Dさんが食堂のドアを開けた[resetfont]のですが、[font color="red" bold="true"]厨房はわたしDさんも開けられません[resetfont]でした[p]
+[font color="red" bold="true"]Dさんが食堂のドアを開けた[resetfont]のですが、[font color="red" bold="true"]厨房はわたしもDさんも開けられません[resetfont]でした[p]
 [font color="red" bold="true"]わ、わたしが大広間を開けられた[resetfont]のでそこから合流したらあんなことに・・・[p]
 [_tb_end_text]
 
@@ -1084,8 +1174,9 @@ Cさんが倒れていた場所に・・・ボタン？[p]
 じゃあ[font color="red" bold="true"]連れていく人とその部屋を選択する[resetfont]ニャ[p]
 選択するのは[font color="red" bold="true"]一人だけ[resetfont]ニャ[p]
 [font color="red" bold="true"]部屋は訪れる順番に２部屋[resetfont]に入力するニャ[p]
-#
-（今の時間、ぼくは厨房に行けるからそこから考えよう）[p]
+#ナゾA
+（今の時間、ぼくは厨房にしか行けない・・・！）[p]
+（よし、厨房から考えよう）[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]

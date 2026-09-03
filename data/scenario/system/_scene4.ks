@@ -14,5 +14,5 @@
 [preload  storage="./data/fgimage/default/MAP_east.webp"  ]
 [preload  storage="./data/fgimage/default/room_rule1.webp"  ]
 [preload  storage="./data/fgimage/default/room_rule2.webp"  ]
-[preload  storage="./data/fgimage/chara/5/家賛成.webp"  ]
+[preload  storage="./data/fgimage/chara/5/杖賛成.webp"  ]
 [return]

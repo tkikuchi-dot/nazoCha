@@ -1,85 +1,164 @@
 [_tb_system_call storage=system/_preview.ks ]
 
 [mask time=10]
+[bg  time="10"  method="crossfade"  storage="備品庫中.webp"  ]
+[tb_show_message_window] 
+[camera  time="10"  zoom="1"  wait="false"  layer="base"  ease_type="linear"  x="200"  ]
+[reset_camera  x="*0px"  y="*0px"  scale="1"  rotate="0deg"  time="10"  ]
 [mask_off time=10]
-[call  storage="common_ui.ks"  target="*init"  ]
-[bg  time="1000"  method="crossfade"  storage="黒背景.webp"  ]
-[mask_off  time="1000"  effect="fadeOut"  ]
-[tb_image_show  time="1500"  storage="default/一日前.webp"  width="1280"  height="720"  name="img_2"  ]
-[wait  time="2000"  ]
-[mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
-[tb_image_hide  time="2000"  ]
-[bg  time="1000"  method="crossfade"  storage="title.webp"  ]
-[mask_off  time="1000"  effect="fadeOut"  ]
-[playbgm  volume="50"  time="3000"  loop="true"  storage="Carefree_Steps.mp3"  fadein="true"  ]
-[chara_show  name="ナゾA"  time="1000"  wait="true"  storage="chara/1/音階.webp"  width="473"  height="335"  left="375"  top="99"  reflect="false"  ]
-[resetfont  ]
-[tb_show_message_window  ]
+*start2
+
+[cm  ]
+[tb_hide_message_window  ]
+[tb_image_hide  time="0"  ]
+[chara_hide_all  time="0"  wait="true"  ]
+[bg  time="1000"  method="crossfade"  storage="備品庫中.webp"  ]
+[clickable  storage="bitikuko.ks"  x="0"  y="0"  width="1280"  height="720"  target="*round2"  ]
+[clickable  storage="bitikuko.ks"  x="11"  y="265"  width="238"  height="438"  target="*check_shelf"  _clickable_img=""  ]
 [tb_start_tyrano_code]
-[eval exp="f.unlock_nazo_a = true; f.unlock_nazo_a_p1 = true"]
+[button graphic="btn_think.webp" target="*think2" x="20" y="400"]
+[button graphic="btn_item.webp" target="*open_item" x="20" y="480"]
+[button graphic="btn_map.webp" target="*open_map2" x="20" y="560"]
 [_tb_end_tyrano_code]
 
-[tb_start_text mode=1 ]
-#ナゾA
-ぼくの名前はナゾA[p]
-何の変哲もないごく普通の公演小謎！[p]
-[_tb_end_text]
+[tb_start_tyrano_code]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="600" y="500"  time="1000" wait="false"]
+[image storage="default/click_icon1.webp" layer="1" page="fore" visible="true" x="80" y="150"  time="1000" wait="false"]
+[_tb_end_tyrano_code]
 
-[tb_hide_message_window  ]
-[chara_hide  name="ナゾA"  time="1000"  wait="true"  pos_mode="false"  ]
-[wait  time="1000"  ]
-[chara_show  name="ナゾA"  time="1000"  wait="false"  storage="chara/1/音階.webp"  width="533"  height="379"  left="695"  top="60"  reflect="false"  ]
-[tb_image_show  time="1000"  storage="default/招待状.webp"  width="533"  height="379"  x="35"  y="60"  _clickable_img=""  name="img_17"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-ところがこの招待状が来てからというもの[p]
-顔の半分が黒塗りされて見えなくなっちゃった。[p]
-こんなんじゃ誰も解けないから普通の公演に顔をだすことなんてできないよ～[p]
-一体どうしたらいいんだ～[p]
-[_tb_end_text]
-
-[tb_hide_message_window  ]
-[glink  color="btn_19_blue"  storage="scene2.ks"  size="20"  target="*continue"  text="招待された場所に行く"  x="300"  y="550"  width=""  height=""  _clickable_img=""  ]
-[glink  color="btn_19_red"  storage="scene2.ks"  size="20"  target="*over"  text="家でダラダラ過ごす"  x="700"  y="550"  width=""  height=""  _clickable_img=""  ]
 [s  ]
-*continue
+*round2
 
-[playse  volume="100"  time="0"  buf="0"  storage="選択8.mp3"  ]
-[tb_show_message_window  ]
-[tb_start_text mode=1 ]
-#ナゾA
-とにかく、この招待状に原因がありそうだな[p]
-この問題を解決するために招待された場所に行くっきゃない！[p]
-ようし、頑張るぞ～[p]
-[_tb_end_text]
-
-[tb_hide_message_window  ]
-[chara_hide  name="ナゾA"  time="1000"  wait="false"  pos_mode="true"  ]
+[cm  ]
+[playse  volume="50"  time="1000"  buf="0"  storage="選択8.mp3"  ]
+[chara_hide_all  time="1000"  wait="false"  ]
 [tb_image_hide  time="1000"  ]
-[jump  storage="scene2.ks"  target="*common"  ]
-[s  ]
-*over
+[camera  time="8000"  zoom="1"  wait="false"  layer="base"  ease_type="linear"  x="200"  ]
+[wait  time="1000"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#ナゾA
+備蓄庫[p]
+ナゾCさんが倒れていた場所だ[p]
+[_tb_end_text]
 
-[playse  volume="100"  time="0"  buf="0"  storage="選択8.mp3"  ]
-[stopbgm  time="2000"  fadeout="true"  ]
-[wait  time="1500"  ]
+[tb_hide_message_window  ]
 [mask  time="1000"  effect="fadeIn"  color="0x000000"  ]
-[chara_hide  name="ナゾA"  time="50"  wait="false"  pos_mode="true"  ]
-[tb_image_hide  time="50"  ]
-[bg  time="1000"  method="crossfade"  storage="黒背景.webp"  ]
+[reset_camera  time="1000"  wait="false"  layer="base"  ease_type="ease"  ]
+[wait  time="1000"  ]
 [mask_off  time="1000"  effect="fadeOut"  ]
-[playbgm  volume="100"  time="1000"  loop="true"  storage="first-game-over-m295_E8aReV1S.mp3"  ]
-[tb_image_show  time="5000"  storage="default/GAMEOVER.webp"  width="1280"  height="720"  name="img_41"  ]
-[tb_ptext_show  x="122"  y="500"  size="30"  color="0xffffff"  time="1000"  text="黒塗りはやがて顔全体を埋め尽くし、ナゾとして生きることはできなくなった"  face="serif,'游明朝'"  anim="false"  edge="undefined"  shadow="undefined"  ]
-[l  ]
-[tb_ptext_hide  time="0"  ]
-[tb_ptext_show  x="122"  y="500"  size="30"  color="0xffffff"  time="1000"  text="・・・・・・・・・・・・"  ]
-[l  ]
-[tb_ptext_hide  time="1000"  ]
-[stopbgm  time="3000"  ]
-[jump  storage="title_screen.ks"  target=""  ]
-*common
+[jump  storage="bitikuko.ks"  target="*start2"  ]
+[tb_start_tyrano_code]
+; ===================================
+; ▼ 棚を調べた時
+; ===================================
+*check_shelf
+[cm]
+[tb_show_message_window]
 
-[stopbgm  time="5000"  fadeout="true"  ]
-[mask  time="5000"  effect="fadeIn"  color="0x000000"  ]
-[jump  storage="scene3.ks"  target=""  ]
+; ▼ 変更点①：変数名を f.item_pills に、判定を true に修正
+[if exp="f.item_pills == true"]
+#ナゾA
+棚だ。もう特に変わったところはない。[p]
+[tb_image_hide time="0"]
+@jump target="*cancel_bitikuko"
+[endif]
+
+
+; ▼ まだ睡眠薬を入手していない場合
+; ① 棚の画像を表示
+#ナゾA
+棚だ。たしかBさんが何かに気づいていたような・・・[p]
+
+
+; ② 睡眠薬の画像に切り替え
+[tb_image_hide time="0"]
+[tb_image_show time="300" storage="default/sleeping_pill.webp" width="226" height="352" x="503" y="70" _clickable_img="" ]
+#ナゾA
+これは・・・睡眠薬！[p]
+もしかして僕が昨日眠くなったのは・・・！[p]
+アルカリ性のものに反応すると紫色に変色するって書いてある[p]
+アルカリ性のものを手に入れて怪しいところを調べるか[p]
+
+; ▼ システムメッセージ
+#ナゾA
+【 睡眠薬を手に入れた！ 】[p]
+
+; ▼ 変更点②：アイテム画面のフラグと一致させるため f.item_pills を true にする
+[eval exp="f.item_pills = true"]
+
+[tb_image_hide time="0"]
+@jump target="*cancel_bitikuko"
+
+
+; ===================================
+; ▼ 調べるのをやめた時の戻り先
+; ===================================
+*cancel_bitikuko
+[cm]
+[tb_image_hide time="0"]
+[tb_hide_message_window]
+; ▼ 備蓄庫の探索画面（元のラベル）へ戻る
+; （※戻り先のラベル名が *start2 や *show_room_ui の場合は書き換えてください）
+@jump target="*start2"
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+; ===================================
+; ▼ アイテム一覧
+; ===================================
+
+*open_item
+; ▼ jump ではなく call を使う！
+[call storage="item.ks" target="*start_item"]
+
+; ▼ item.ks で [return] が実行されると、自動的に「ここ」に帰ってきます！
+; 帰ってきたら、元の部屋の背景などを再表示してあげる
+[bg storage="備品庫.webp" time="0"]
+@jump target="*start2" ;（元のクリック待ちラベルなどへ飛ぶ）
+
+; ===================================
+; ▼ MAPへ
+; ===================================
+*open_map2
+; ▼ ここが重要！「の *start に戻ってきてね」と変数にメモを残す
+[eval exp="f.return_file = 'bitikuko.ks'"]
+[eval exp="f.return_label = '*start2'"]
+; メモを残してからMAPへジャンプ！
+[jump storage="map2.ks" target="*start"]
+
+; ===================================
+; ▼ think
+; ===================================
+*think2
+[cm]
+[tb_show_message_window]
+; ▼
+#
+色んな場所を探索して、なんとかアリバイとなるものを証明しないと[p]
+[tb_hide_message_window]
+@jump target="*start2"
+[_tb_end_tyrano_code]
+
+*start3
+
+[cm  ]
+[bg  time="1000"  method="crossfade"  storage="備品庫中.webp"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+制作中[p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[tb_start_tyrano_code]
+; ===================================
+; ▼ MAPへ
+; ===================================
+*open_map3
+; ▼ ここが重要！「の *start に戻ってきてね」と変数にメモを残す
+[eval exp="f.return_file = 'bitikuko.ks'"]
+[eval exp="f.return_label = '*start3'"]
+; メモを残してからMAPへジャンプ！
+[jump storage="map3.ks" target="*start"]
+[_tb_end_tyrano_code]
+

@@ -81,7 +81,7 @@
 [tb_image_hide  time="300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 このモニターだけ映像が映っている[p]
 大浴場の前の扉のようだ[p]
 巻き戻してみると[p]
@@ -89,6 +89,10 @@
 時半ごろに出ていく様子が映し出されている[p]
 どうやら茶々丸が時間を止めるまで、それ以外の出入りはなさそうだ[p]
 [_tb_end_text]
+
+[tb_start_tyrano_code]
+[eval exp="f.unlock_clue_4 = true; f.unlock_clue_4_p1 = true"]
+[_tb_end_tyrano_code]
 
 [tb_hide_message_window  ]
 [jump  storage="syueisitu.ks"  target="*start2"  ]

@@ -1,6 +1,6 @@
 [_tb_system_call storage=system/_scene8.ks]
-[call storage="common_ui.ks" target="*init"]
 
+[call  storage="common_ui.ks"  target="*init"  ]
 *start
 
 [chara_hide_all  time="1000"  wait="true"  ]
@@ -24,6 +24,11 @@
 [tb_hide_message_window  ]
 [chara_hide_all  time="1000"  wait="true"  ]
 [tb_image_show  time="1000"  storage="default/洗浄後.webp"  width="497"  height="352"  x="375"  y="98"  _clickable_img=""  name="img_14"  ]
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_c_p4 = true"]
+[eval exp="f.unlock_clue_3 = true; f.unlock_clue_3_p1 = true"]
+[_tb_end_tyrano_code]
+
 [wait  time="2000"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
@@ -308,19 +313,57 @@
 @jump target="*show_keyboard"
 
 *c_daku
-[eval exp="f.answer = f.answer + '゛'"]
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1); // 最後の1文字を取得
+var rest = ans.slice(0, -1); // それ以外の文字
+// 濁音への変換辞書
+var map = {'か':'が','き':'ぎ','く':'ぐ','け':'げ','こ':'ご',
+'さ':'ざ','し':'じ','す':'ず','せ':'ぜ','そ':'ぞ',
+'た':'だ','ち':'ぢ','つ':'づ','て':'で','と':'ど',
+'は':'ば','ひ':'び','ふ':'ぶ','へ':'べ','ほ':'ぼ'};
+if (map[last]) f.answer = rest + map[last]; // 変換できればすり替え
+}
+[endscript]
 @jump target="*show_keyboard"
+
 *c_han
-[eval exp="f.answer = f.answer + '゜'"]
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1);
+var rest = ans.slice(0, -1);
+// 半濁音への変換辞書
+var map = {'は':'ぱ','ひ':'ぴ','ふ':'ぷ','へ':'ぺ','ほ':'ぽ'};
+if (map[last]) f.answer = rest + map[last];
+}
+[endscript]
 @jump target="*show_keyboard"
+
 *c_cho
+; 伸ばす棒はそのまま追加でOK
 [eval exp="f.answer = f.answer + 'ー'"]
 @jump target="*show_keyboard"
 
 *mod_small
-; 小文字変換の処理（必要であれば実装）
-@jump target="*show_keyboard"
+[iscript]
+var ans = f.answer;
+if (ans.length > 0) {
+var last = ans.slice(-1);
+var rest = ans.slice(0, -1);
+// 小文字への変換辞書
+var map = {'あ':'ぁ','い':'ぃ','う':'ぅ','え':'ぇ','お':'ぉ',
+'や':'ゃ','ゆ':'ゅ','よ':'ょ','つ':'っ','わ':'ゎ'};
+// 小文字から大文字に戻す辞書（連打した時用）
+var rev = {'ぁ':'あ','ぃ':'い','ぅ':'う','ぇ':'え','ぉ':'お',
+'ゃ':'や','ゅ':'ゆ','ょ':'よ','っ':'つ','ゎ':'わ'};
 
+if (map[last]) f.answer = rest + map[last];
+else if (rev[last]) f.answer = rest + rev[last];
+}
+[endscript]
+@jump target="*show_keyboard"
 ; ===================================
 ; ▼ 操作系ボタンの処理
 ; ===================================
@@ -394,7 +437,7 @@
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
-#
+#ナゾA
 ・・・！[p]
 #ナゾE
 う、うう、うそ？ですよね？[p]
@@ -414,7 +457,7 @@
 うそ・・・[p]
 #ナゾB
 おいあいつを拘束するぞ[p]
-#
+#ナゾA
 （まずい、逃げないと・・・！）[p]
 [_tb_end_text]
 
@@ -425,7 +468,7 @@
 [mask_off  time="1000"  effect="fadeOut"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （とりあえず、どこかの部屋に隠れないと）[p]
 （ここは・・・！）[p]
 [_tb_end_text]
@@ -437,8 +480,9 @@
 [mask_off  time="1000"  effect="fadeOut"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 （は、入れた！）[p]
+（ここは・・・物置の中か？）[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -447,6 +491,7 @@
 [tb_start_text mode=1 ]
 #ナゾB
 おい！開けろ！[p]
+どうやって物置に入った！[p]
 出てこい！[p]
 #ナゾD
 危ないっすよ、まだ凶器とか持ち歩いてるかもっす[p]
@@ -454,7 +499,7 @@
 #ナゾB
 んなもん関係ねーよ[p]
 返り討ちにしてやらー[p]
-#
+#ナゾA
 ・・・！[p]
 [_tb_end_text]
 
@@ -463,7 +508,7 @@
 [chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/バードつみき.webp"  width="424"  height="300"  left="650"  top="151"  reflect="false"  ]
 [tb_start_text mode=1 ]
 #ナゾB
-中にいるってことはカギはかかってないはずだ[p]
+中にいるってことは、物置が特別とは言ってもカギはかかってないはずだ[p]
 おいD、せーので開けるぞ[p]
 #ナゾD
 う、うっす[p]
@@ -498,6 +543,10 @@
 #ナゾA
 そ、それは・・・！[p]
 [_tb_end_text]
+
+[tb_start_tyrano_code]
+[eval exp="f.unlock_nazo_a_p3 = true"]
+[_tb_end_tyrano_code]
 
 [glink  color="btn_19_black"  storage="scene8.ks"  size="20"  text="ぼ、僕じゃないです"  x="240"  y="180"  width="220"  height=""  _clickable_img=""  target="*no"  ]
 [glink  color="btn_19_black"  storage="scene8.ks"  size="20"  text="やってません"  x="240"  y="300"  width="220"  height=""  _clickable_img=""  target="*no2"  ]
@@ -596,7 +645,7 @@ Aさんいいナゾだって思ってたのに[p]
 [chara_hide_all  time="300"  wait="true"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 何としてでも疑いを晴らさないと[p]
 まずはみんなに昨日のことを聞こう[p]
 [_tb_end_text]
@@ -714,11 +763,11 @@ Aさんいいナゾだって思ってたのに[p]
 [chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/バードつみき.webp"  width="505"  height="357"  left="375"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 な、ナゾCさんを最後に見たのはいつですか？[p]
 #ナゾD
 ・・・・・[p]
-#
+#ナゾA
 （だめだ、話を聞いてくれない）[p]
 [_tb_end_text]
 
@@ -731,18 +780,18 @@ Aさんいいナゾだって思ってたのに[p]
 [chara_show  name="ナゾD"  time="1000"  wait="true"  storage="chara/4/バードつみき.webp"  width="505"  height="357"  left="375"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 Bさんとずっと一緒だったって聞きました[p]
 お二人ともCさんは見てないんですよね？[p]
 #ナゾD
 うーん[p]
-#
+#ナゾA
 お願いします[p]
 教えてください[p]
 #ナゾD
 分かったっす[p]
 実は食堂から自分の部屋に帰った後のCさんを見たんすよ[p]
-#
+#ナゾA
 え、それはいつ頃ですか？[p]
 #ナゾD
 うーん、何時ごろだったんすかね？[p]
@@ -757,21 +806,21 @@ Aさんが遊戯室を通って自分の部屋に帰ったのは23時半ごろ�
 僕は早く上がりたかったんすけど[p]
 やれ「サウナ対決だ」とか「水風呂我慢大会だ」とかで[p]
 Bさんってああ見えて子供っぽいっすよね？[p]
-#
+#ナゾA
 そ、そうなのかな？[p]
 #ナゾD
 絶対そうっすよ[p]
 僕があがろうとしたらすぐ対決だとか言って引き留めてくるんすもん[p]
 結局一時間くらいいましたよ[p]
 んで1時半くらいに大浴場をでて自分の部屋に戻って少ししたら、ぼくの部屋をEさんが訪ねてきたんです[p]
-#
+#ナゾA
 Eさんが？[p]
 #ナゾD
 ですです[p]
 なんでも茶々丸の言ってたことが気がかりで眠れないとかで[p]
 んで落ち着くために休憩室に入れるか試してみたら入れたっす[p]
 そこでEさんと話しながらのんびりしてたんすけど[p]
-#
+#ナゾA
 それで？[p]
 [_tb_end_text]
 
@@ -790,7 +839,7 @@ Eさんが？[p]
 #ナゾD
 休憩室には窓があって廊下側が見れるんすよ[p]
 で、そこをナゾCさんが通るところを見たっす[p]
-#
+#ナゾA
 Cさんが？[p]
 #ナゾD
 間違いないっす[p]
@@ -804,21 +853,22 @@ Eさんと一緒に見たんでEさんに聞いてくれてもいいっす[p]
 [chara_move  name="ナゾC"  anim="true"  time="8000"  effect="linear"  wait="false"  left="-300"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
+#ナゾD
 で、不思議なことにまたすぐに戻っていったんすよ[p]
-#
+#ナゾA
 戻った？[p]
 #ナゾD
 はい[p]
 窓の外を遊戯室の方から大広間の方に向かったと思ったら[p]
 1分か2分くらいですぐまた同じ道を引き返してたんす[p]
-#
+#ナゾA
 それは・・・[p]
 不思議だな[p]
 #ナゾD
 でしょ？[p]
 僕とEさんも不思議に思ってて、今日何してたのか聞こうと思ってたんすけど[p]
 まさかこんなことになるなんて・・・[p]
-#
+#ナゾA
 ・・・[p]
 [_tb_end_text]
 
@@ -873,6 +923,9 @@ Eさんにも聞いてみてください[p]
 ; 初めて話を聞く時
 @jump target="*talk_E_first"
 [else]
+; すでに聞いた後
+@jump target="*talk_E_after"
+[endif]
 [_tb_end_tyrano_code]
 
 *talk_E_ignore
@@ -882,11 +935,11 @@ Eさんにも聞いてみてください[p]
 [chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/杖賛成.webp"  width="505"  height="357"  left="375"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 な、ナゾCさんを最後に見たのはいつですか？[p]
 #ナゾE
 ・・・・・[p]
-#
+#ナゾA
 （ダメだ。完全に軽蔑されている）[p]
 [_tb_end_text]
 
@@ -899,42 +952,42 @@ Eさんにも聞いてみてください[p]
 [chara_show  name="ナゾE"  time="1000"  wait="true"  storage="chara/5/杖賛成.webp"  width="505"  height="357"  left="375"  top="108"  reflect="false"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 Dさんから、休憩室でCさんを見たって聞きました[p]
 #ナゾE
 ・・・・・[p]
-#
+#ナゾA
 教えて下さい！[p]
 #ナゾE
 ・・・・・[p]
 ・・・本当に犯人じゃないんですか？[p]
-#
+#ナゾA
 僕じゃありません[p]
 #ナゾE
 ・・・・・[p]
 ・・・分かりました。信じます[p]
-#
+#ナゾA
 ありがとうございます[p]
 #ナゾE
 でもEさんから聞いたんなら、私から言えることはあまりないかもです[p]
 確かに私はDさんと一緒にCさんがこの廊下を通るのを見ました[p]
-#
+#ナゾA
 それはCさんで間違いないんですね？[p]
 #ナゾE
 ま、間違いありません[p]
 2回も通ったのでしっかり確認しました[p]
 あ、あれは間違いなくCさんでした[p]
-#
+#ナゾA
 （本当に2回通ったみたいだ）[p]
 （Cさんは何をしにこの廊下を通ったんだ？）[p]
 #ナゾE
 そ、それと[p]
-#
+#ナゾA
 何です？[p]
 #ナゾE
 その時はまだ「箱庭」でした[p]
 こ、これって何か役に立ちますか？[p]
-#
+#ナゾA
 うーん、役に立つかは分かりませんが[p]
 情報ありがとうございます！[p]
 [_tb_end_text]
@@ -976,7 +1029,7 @@ Dさんから、休憩室でCさんを見たって聞きました[p]
 [chara_hide_all  time="1000"  wait="true"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 みんなの話を総合しよう[p]
 [_tb_end_text]
 
@@ -1257,7 +1310,7 @@ Aさんの悲鳴は聞こえてきたんすけど[p]
 [mask_off  time="1000"  effect="fadeOut"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 あんなに急に眠くなるのはおかしい・・・[p]
 何か眠くなった原因があるはずだ[p]
 [_tb_end_text]
@@ -1294,7 +1347,7 @@ Aさんの悲鳴は聞こえてきたんすけど[p]
 [tb_image_hide  time="600"  ]
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
-#
+#ナゾA
 アリバイを証明するって言ってもな[p]
 とりあえず行けるところに行って色々探索しよう[p]
 [_tb_end_text]

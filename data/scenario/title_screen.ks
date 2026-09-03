@@ -18,7 +18,6 @@
 
 [tb_hide_message_window  ]
 
-
 ;タイトル表示
 
 
@@ -37,14 +36,13 @@ $("#root_layer_game [name='ui_status']").remove();
 $("#root_layer_game [name='ui_status']").remove();
 [endscript]
 
-[call target="*draw_title_buttons"]
-[s]
-
+[call  target="*draw_title_buttons"  storage=""  ]
+[s  ]
 *draw_title_buttons
 
 [glink  color="btn_19_black"  text="はじめから"  x="1063"  y="462"  size="20"  target="*start"  width=""  height=""  _clickable_img=""  ]
 [glink  color="btn_19_black"  text="つづきから"  x="1063"  y="566"  size="20"  target="*load"  width=""  height=""  _clickable_img=""  ]
-[return]
+[return  ]
 
 ;-------ボタンが押されたときの処理
 
